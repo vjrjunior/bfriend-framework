@@ -1,0 +1,381 @@
+@import "bfriend-mixins";
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6,
+a, ul, ul li, ol, ol li, input, textarea, span, p, label, button {
+	font-family: $font-pri;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* highlights */
+/* ----------------------------------------- */
+h1, h2, h3, h4, h5, h6, p, a, li, span {
+	&::selection, &::-moz-selection, &::-webkit-selection {
+		background-color: $cor-pri;
+		color: #fff;
+	}
+}
+/* ----------------------------------------- highlights */	
+
+/* elements with transition */
+/* ----------------------------------------- */
+a, img, input, button {
+	@include transition(all 150ms ease-in-out);
+	text-decoration: none !important;
+}
+/* ----------------------------------------- elements with transition */	
+
+/* embed container */
+/* ----------------------------------------- */
+.embed-container { 
+	position: relative; 
+	padding-bottom: 56.25%;
+	overflow: hidden;
+	max-width: 100%;
+	height: auto;
+
+	iframe, object, embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+/* ----------------------------------------- embed container */	
+
+/* acf map container */
+/* ----------------------------------------- */
+.acf-map {
+	height: 400px;
+	img {
+	  max-width: inherit !important;
+	}
+}
+/* ----------------------------------------- acf map container */	
+
+/* select box */
+/* ----------------------------------------- */
+.select-box {
+	width: 100%;
+	position: relative;
+	z-index: 2;
+	border: 1px solid #D2D2D2;
+	
+	select {
+		width: 100%;
+		height: 45px;
+	  position: relative;
+	  z-index: 2;
+	  background: transparent;
+	  color: $cor-pri;
+	  display: inline-block;
+	  padding: 0 10px;
+	  padding-right: 30px;
+	  border: 0;
+	  -webkit-appearance: none;
+   	-moz-appearance: none;
+   	appearance: none;
+	  box-sizing: border-box;
+	  @include radius(0);
+	  
+	  &:focus { outline: none; }
+	  &:hover { cursor: pointer; }
+	}
+	
+	&:after {
+	  font-family: FontAwesome;
+		content:"\f107";
+		display: flex;
+		align-items: center;
+	  position: absolute;
+	  right: 10px;
+		top: 0;
+		height: 45px;
+	  z-index: 1;
+	  color: $cor-pri;
+	  @include font(20px);
+	}
+}
+/* ----------------------------------------- select box */	
+
+/* contact form */
+/* ----------------------------------------- */
+.wpcf7 {
+	position: relative;
+
+	.wpcf7-response-output {
+		font-family: $font-pri;
+		padding: 10px 0;
+		text-align: center;
+		margin: 1rem 0 1.5rem;
+		color: $cor-pri;
+		border: 1px solid $cor-pri;
+	}
+
+	.wpcf7-not-valid-tip {
+		display: none;
+	}
+
+	.ajax-loader,
+	.ajax-loader:before,
+	.ajax-loader:after {
+		width: 0.5em;
+		height: 1em;
+		animation: load 1s infinite ease-in-out;
+		-webkit-animation: load 1s infinite ease-in-out;
+	}
+	.ajax-loader {
+		background-image: none !important;
+		position: absolute;
+		bottom: 0; left: 50%;
+		width: 0.5em !important;
+		height: 1em !important;
+		background: $cor-pri;
+		color: $cor-pri;
+		text-indent: -9999em;
+		margin: auto !important;
+		font-size: 14px;
+		animation-delay: -0.16s;
+		-webkit-animation-delay: -0.16s;
+		transform: translate(-50%,-50%) scale(.3);
+		-webkit-transform: translate(-50%,-50%) scale(.3);
+
+		&:before, &:after {
+			background: $cor-pri;
+			position: absolute;
+			top: 0;
+			content: '';
+		}
+
+		&:before {
+			left: -1.5em;
+			animation-delay: -0.32s;
+			-webkit-animation-delay: -0.32s;
+		}
+		
+		&:after {
+			left: 1.5em;
+		}
+	}
+
+	p {
+		position: relative;
+		
+		&:not(.normal) {
+			width: 100%;
+			margin: 0 0 25px;
+		}
+
+		.wpcf7-form-control-wrap {
+			display: block;
+		}
+	}
+
+	label:not(.normal):not(.error) {
+		color: $cor-pri;
+		margin: 0;
+		position: absolute;
+		z-index: 10;
+		top: 22px;
+		left: 20px;
+		pointer-events: none;
+		transform: translateY(-50%);
+		text-align: left;
+		@include font(16px);
+		@include transition(top .2s);       
+
+		&.has-value {
+			top: -9px;
+			@include font(12px);
+		}
+	}
+
+	.line {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		height: 1px;
+		background: $cor-pri;
+		width: 0;
+		@include transition(width 0.2s);
+
+		&.has-value {
+			width: 100%;
+		}
+	}
+
+	label {
+		width: 100%;
+		margin: 0;
+	}
+
+	input:not([type='radio']), textarea {
+		width: 100%;
+		border: 1px solid #D2D2D2;
+		padding: .5rem 1rem;
+		line-height: 1.5;
+		outline: none;
+		color: $cor-pri;
+
+		&.wpcf7-not-valid {
+			border-color: $cor-pri;
+		}
+	}
+
+	input[type="date"] {
+		appearance: none;
+		color: transparent;
+
+		&.val {
+			color: $cor-pri;
+			&::-webkit-datetime-edit-text {
+				color: $cor-pri;
+			}
+		}
+
+		&::-webkit-inner-spin-button { 
+			display: none;
+		}
+
+		&::-webkit-datetime-edit-text {
+			color: transparent;
+		}
+
+		&::-webkit-calendar-picker-indicator {
+			color: #BABCBF;
+			background: transparent;
+			height: 6px;
+			opacity: 1;
+			visibility: visible;
+			display: block;
+		}
+	}
+
+	.box-file {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		position: relative;
+		margin-bottom: 1rem;
+	}
+
+	.btn-file {
+		position: relative;
+		max-width: 195px;
+		cursor: pointer;
+		float: left;
+		margin: 0 15px 0 0;
+		padding: 10px 20px;
+		@include normal;
+		@include transition(all 150ms ease-in-out);
+
+		i { margin: 0 10px 0 0; }
+
+		&:hover {
+			color: $cor-qua;
+			background: $cor-pri;
+		}
+
+		span.wpcf7-not-valid-tip {
+			display: block;
+			position: absolute;
+			bottom: -35px;
+			left: -20px;
+			width: 280px;
+		}
+
+		input[type=file] {
+			padding: 0;
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			display: block;
+		}
+	}
+
+	button {
+		border: 0;
+		cursor: pointer;
+
+		&:focus { outline: none; }
+		&:hover {
+			color: white;
+			background: darken($cor-pri, 10%);
+		}
+	}
+}
+/* ----------------------------------------- contact form */	
+
+/* wp wysiwyg styles */
+/* ----------------------------------------- */
+.hentry {
+	a {
+		color: $cor-pri;
+	}
+	
+	.entry-content img { margin: 0 0 1.5em 0; }
+	
+	.alignleft, img.alignleft {
+		margin-right: 1.5em;
+		display: inline;
+		float: left;
+	}
+	
+	.alignright, img.alignright {
+		margin-left: 1.5em;
+		display: inline;
+		float: right;
+	}
+	
+	.aligncenter, img.aligncenter {
+		margin-right: auto;
+		margin-left: auto;
+		display: block;
+		clear: both;
+	}
+	
+	.wp-caption {
+		margin-bottom: 1.5em;
+		text-align: center;
+		padding-top: 5px;
+		
+		img {
+			border: 0 none;
+			padding: 0;
+			margin: 0;
+		}
+		
+		p.wp-caption-text {
+			line-height: 1.5;
+			font-size: 10px;
+			margin: 0;
+		}
+	}
+
+	.wp-smiley {
+		margin: 0 !important;
+		max-height: 1em;
+	}
+	
+	blockquote.left {
+		margin-right: 20px;
+		text-align: right;
+		margin-left: 0;
+		width: 33%;
+		float: left;
+	}
+	
+	blockquote.right {
+		margin-left: 20px;
+		text-align: left;
+		margin-right: 0;
+		width: 33%;
+		float: right;
+	}
+}
+/* ----------------------------------------- wp wysiwyg styles */	
