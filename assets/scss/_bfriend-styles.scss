@@ -11,7 +11,7 @@ a, ul, ul li, ol, ol li, input, textarea, span, p, label, button {
 /* ----------------------------------------- */
 h1, h2, h3, h4, h5, h6, p, a, li, span {
 	&::selection, &::-moz-selection, &::-webkit-selection {
-		background-color: $cor-pri;
+		background-color: $color-pri;
 		color: #fff;
 	}
 }
@@ -68,7 +68,7 @@ a, img, input, button {
 	  position: relative;
 	  z-index: 2;
 	  background: transparent;
-	  color: $cor-pri;
+	  color: $color-pri;
 	  display: inline-block;
 	  padding: 0 10px;
 	  padding-right: 30px;
@@ -93,7 +93,7 @@ a, img, input, button {
 		top: 0;
 		height: 45px;
 	  z-index: 1;
-	  color: $cor-pri;
+	  color: $color-pri;
 	  @include font(20px);
 	}
 }
@@ -109,8 +109,8 @@ a, img, input, button {
 		padding: 10px 0;
 		text-align: center;
 		margin: 1rem 0 1.5rem;
-		color: $cor-pri;
-		border: 1px solid $cor-pri;
+		color: $color-pri;
+		border: 1px solid $color-pri;
 	}
 
 	.wpcf7-not-valid-tip {
@@ -131,18 +131,18 @@ a, img, input, button {
 		bottom: 0; left: 50%;
 		width: 0.5em !important;
 		height: 1em !important;
-		background: $cor-pri;
-		color: $cor-pri;
+		background: $color-pri;
+		color: $color-pri;
 		text-indent: -9999em;
 		margin: auto !important;
-		font-size: 14px;
 		animation-delay: -0.16s;
 		-webkit-animation-delay: -0.16s;
 		transform: translate(-50%,-50%) scale(.3);
-		-webkit-transform: translate(-50%,-50%) scale(.3);
+    -webkit-transform: translate(-50%,-50%) scale(.3);
+    @include font(14px);
 
 		&:before, &:after {
-			background: $cor-pri;
+			background: $color-pri;
 			position: absolute;
 			top: 0;
 			content: '';
@@ -170,18 +170,24 @@ a, img, input, button {
 		.wpcf7-form-control-wrap {
 			display: block;
 		}
+  }
+  
+  label {
+		width: 100%;
+		margin: 0;
 	}
 
 	label:not(.normal):not(.error) {
-		color: $cor-pri;
+		color: $color-pri;
 		margin: 0;
-		position: absolute;
+    position: absolute;
+    width: calc(100% - 20px);
 		z-index: 10;
 		top: 22px;
 		left: 20px;
 		pointer-events: none;
-		transform: translateY(-50%);
 		text-align: left;
+		transform: translateY(-50%);
 		@include font(16px);
 		@include transition(top .2s);       
 
@@ -196,7 +202,7 @@ a, img, input, button {
 		bottom: 0;
 		left: 0;
 		height: 1px;
-		background: $cor-pri;
+		background: $color-pri;
 		width: 0;
 		@include transition(width 0.2s);
 
@@ -205,32 +211,30 @@ a, img, input, button {
 		}
 	}
 
-	label {
-		width: 100%;
-		margin: 0;
-	}
-
 	input:not([type='radio']), textarea {
-		width: 100%;
+    width: 100%;
+    height: 50px;
 		border: 1px solid #D2D2D2;
 		padding: .5rem 1rem;
 		line-height: 1.5;
 		outline: none;
-		color: $cor-pri;
+		color: $color-pri;
 
 		&.wpcf7-not-valid {
-			border-color: $cor-pri;
+			border-color: $color-pri;
 		}
-	}
+  }
+  
+  textarea { height: 150px; }
 
 	input[type="date"] {
 		appearance: none;
 		color: transparent;
 
 		&.val {
-			color: $cor-pri;
+			color: $color-pri;
 			&::-webkit-datetime-edit-text {
-				color: $cor-pri;
+				color: $color-pri;
 			}
 		}
 
@@ -274,8 +278,8 @@ a, img, input, button {
 		i { margin: 0 10px 0 0; }
 
 		&:hover {
-			color: $cor-qua;
-			background: $cor-pri;
+			color: $color-qua;
+			background: $color-pri;
 		}
 
 		span.wpcf7-not-valid-tip {
@@ -305,7 +309,7 @@ a, img, input, button {
 		&:focus { outline: none; }
 		&:hover {
 			color: white;
-			background: darken($cor-pri, 10%);
+			background: darken($color-pri, 10%);
 		}
 	}
 }
@@ -314,10 +318,6 @@ a, img, input, button {
 /* wp wysiwyg styles */
 /* ----------------------------------------- */
 .hentry {
-	a {
-		color: $cor-pri;
-	}
-	
 	.entry-content img { margin: 0 0 1.5em 0; }
 	
 	.alignleft, img.alignleft {
@@ -362,20 +362,22 @@ a, img, input, button {
 		max-height: 1em;
 	}
 	
-	blockquote.left {
-		margin-right: 20px;
-		text-align: right;
-		margin-left: 0;
-		width: 33%;
-		float: left;
-	}
-	
-	blockquote.right {
-		margin-left: 20px;
-		text-align: left;
-		margin-right: 0;
-		width: 33%;
-		float: right;
-	}
+	blockquote {
+    &.left {
+      margin-right: 20px;
+      text-align: right;
+      margin-left: 0;
+      width: 33%;
+      float: left;
+    }
+    
+    &.right {
+      margin-left: 20px;
+      text-align: left;
+      margin-right: 0;
+      width: 33%;
+      float: right;
+    }
+  }
 }
 /* ----------------------------------------- wp wysiwyg styles */	

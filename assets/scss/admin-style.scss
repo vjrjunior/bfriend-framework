@@ -1,3 +1,19 @@
+/* 	hidden elements  */
+/* ----------------------------------------- */
+body {
+  &:not(.user-1) {
+    #adminmenu {
+      li {
+        &#toplevel_page_edit-post_type-acf-field-group,
+        &#toplevel_page_wpseo_dashboard {
+          display: none;
+        }
+      }
+    }
+  }
+}  
+/* ----------------------------------------- 	hidden elements */
+
 /* split repeater into blocks */
 /* ----------------------------------------- */
 #bloco-col-2 {
@@ -27,6 +43,7 @@
 		width: 96%;
 	}
 }
+
 #bloco-col-4 {
 	.acf-table {
 		> tbody {

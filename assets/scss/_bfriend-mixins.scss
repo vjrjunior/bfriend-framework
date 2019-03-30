@@ -2,18 +2,28 @@
 /* ----------------------------------------- */
 	$font-pri:    '', sans-serif;
 
-	$cor-pri:     #000000;
-	$cor-seg:     transparent;
-	$cor-ter:     transparent;
-	$cor-qua:     transparent;
+	$color-pri:     #000000;
+	$color-sec:     transparent;
+	$color-ter:     transparent;
+	$color-qua:     transparent;
 /* ----------------------------------------- variables */
+
+/* 	classes  */
+/* ----------------------------------------- */
+  .font-pri  { font-family: $font-pri; }
+  
+  .color-pri { color: $color-pri; }
+  .color-sec { color: $color-sec; }
+  .color-ter { color: $color-ter; }
+  .color-qua { color: $color-qua; }
+/* ----------------------------------------- 	classes */
 
 /* general mixins and functions */
 /* ----------------------------------------- */
 	@mixin columns($qtd: 2) {
 		@include media-breakpoint-down(sm) {
-			-webkit-column-count: $qtd; /* Chrome, Safari, Opera */
-		  -moz-column-count: $qtd; /* Firefox */
+			-webkit-column-count: $qtd;
+		  -moz-column-count: $qtd;
 		  column-count: $qtd;
 		}
 	}
@@ -65,26 +75,6 @@
 	  -moz-border-radius: $px;
 	  -ms-border-radius: $px;
 	  border-radius: $px;
-	}
-
-	@mixin grayscale_on() {
-	  -webkit-filter: grayscale(100%);
-	  filter: grayscale(100%);
-	  filter: gray;
-	  filter: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='0'><filter id='greyscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0' /></filter></svg>#greyscale");
-	}
-
-	@mixin grayscale_off() {
-	  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
-	  -webkit-filter: grayscale(0%);
-	}
-
-	@mixin grayscale() {
-	  @extend grayscale_on();
-	  &:hover,
-	  &.active {
-	  	@extend grayscale_off();
-	  }
 	}
 
 	@mixin placeholder {

@@ -9,6 +9,13 @@
 	],
 "creatorBuild": "26667",
 "files": {
+	"\/.gitattributes": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/.gitattributes",
+		"oF": 0
+		},
 	"\/assets\/acf-default.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -78,40 +85,6 @@
 		"oAP": "\/assets\/css\/min\/login-style.css.map",
 		"oF": 0
 		},
-	"\/assets\/css\/min\/woocommerce-layout-min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/assets\/css\/min\/woocommerce-layout-min-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"\/assets\/css\/min\/woocommerce-layout-min.css.map": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/css\/min\/woocommerce-layout-min.css.map",
-		"oF": 0
-		},
-	"\/assets\/css\/min\/woocommerce-min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/assets\/css\/min\/woocommerce-min-min.css",
-		"oF": 0,
-		"oS": 3
-		},
-	"\/assets\/css\/min\/woocommerce-min.css.map": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/css\/min\/woocommerce-min.css.map",
-		"oF": 0
-		},
 	"\/assets\/css\/theme.css": {
 		"aP": 1,
 		"bl": 0,
@@ -121,68 +94,6 @@
 		"oAP": "\/assets\/css\/theme-min.css",
 		"oF": 0,
 		"oS": 3
-		},
-	"\/assets\/fonts\/woo\/star.eot": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/fonts\/woo\/star.eot",
-		"oF": 0
-		},
-	"\/assets\/fonts\/woo\/star.svg": {
-		"ft": 2097152,
-		"miP": 0,
-		"oA": 2,
-		"oAP": "\/assets\/fonts\/woo\/star.svg",
-		"oF": 0,
-		"opt": 0,
-		"plM": 3758088159,
-		"prP": 0
-		},
-	"\/assets\/fonts\/woo\/star.ttf": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/fonts\/woo\/star.ttf",
-		"oF": 0
-		},
-	"\/assets\/fonts\/woo\/star.woff": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/fonts\/woo\/star.woff",
-		"oF": 0
-		},
-	"\/assets\/fonts\/woo\/WooCommerce.eot": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/fonts\/woo\/WooCommerce.eot",
-		"oF": 0
-		},
-	"\/assets\/fonts\/woo\/WooCommerce.svg": {
-		"ft": 2097152,
-		"miP": 0,
-		"oA": 2,
-		"oAP": "\/assets\/fonts\/woo\/WooCommerce.svg",
-		"oF": 0,
-		"opt": 0,
-		"plM": 3758088159,
-		"prP": 0
-		},
-	"\/assets\/fonts\/woo\/WooCommerce.ttf": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/fonts\/woo\/WooCommerce.ttf",
-		"oF": 0
-		},
-	"\/assets\/fonts\/woo\/WooCommerce.woff": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/assets\/fonts\/woo\/WooCommerce.woff",
-		"oF": 0
 		},
 	"\/assets\/images\/bfriend.svg": {
 		"ft": 2097152,
@@ -1823,13 +1734,6 @@
 		"oAP": "\/header.php",
 		"oF": 0
 		},
-	"\/includes\/cpt-type.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/includes\/cpt-type.php",
-		"oF": 0
-		},
 	"\/index.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -1907,6 +1811,24 @@
 		"oAP": "\/partials\/_wrap-start.php",
 		"oF": 0
 		},
+	"\/README.md": {
+		"cB": 0,
+		"cS": 0,
+		"eF": 1,
+		"eL": 1,
+		"ema": 1,
+		"eSQ": 1,
+		"ft": 4096,
+		"oA": 0,
+		"oAP": "\/README.html",
+		"oF": 0,
+		"oFM": 0,
+		"oS": 0,
+		"pHT": 0,
+		"pME": 1,
+		"rFN": 0,
+		"uCM": 0
+		},
 	"\/screenshot.png": {
 		"ft": 32768,
 		"iS": 11288,
@@ -1951,13 +1873,6 @@
 		"oAP": "\/style-min.css",
 		"oF": 0,
 		"oS": 3
-		},
-	"\/woocommerce.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/woocommerce.php",
-		"oF": 0
 		}
 	},
 "hooks": [
@@ -1966,7 +1881,7 @@
 	},
 "projectAttributes": {
 	"creationDate": 528384724,
-	"displayValue": "bfriend",
+	"displayValue": "bfriend-framework",
 	"displayValueWasSetByUser": 0,
 	"iconImageName": "meme-facepalm",
 	"iconImageWasSetByUser": 0

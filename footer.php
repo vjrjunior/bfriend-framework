@@ -11,7 +11,7 @@
  */
 ?>
 
-	<footer id="footer" role="contentinfo">
+	<footer class="main-footer" role="contentinfo">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-2">

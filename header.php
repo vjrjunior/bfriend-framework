@@ -17,11 +17,11 @@
 	</head>
 	<body <?php body_class(); ?>>
 
-    <header id="header">
+    <header class="main-header">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <nav id="navbar" class="navbar navbar-expand-lg bsnav bsnav-light">
+            <nav id="navbar" class="navbar navbar-expand-lg bsnav">
               <a class="navbar-brand" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
                 <img src="<?php echo get_field('logo', 'option'); ?>" class="img-fluid" />
               </a>
