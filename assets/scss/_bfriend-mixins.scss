@@ -5,7 +5,14 @@
 	$color-pri:     #000000;
 	$color-sec:     transparent;
 	$color-ter:     transparent;
-	$color-qua:     transparent;
+  $color-qua:     transparent;
+
+  $bf-colors: (
+    pri: $color-pri,
+    sec: $color-sec,
+    ter: $color-ter,
+    qua: $color-qua
+  ) !default;
 /* ----------------------------------------- variables */
 
 /* 	classes  */
@@ -20,6 +27,29 @@
 
 /* general mixins and functions */
 /* ----------------------------------------- */
+  @function bf-color($key: "pri") {
+    @return map-get($bf-colors, $key);
+  }
+
+  @function bf-background($key: "pri") {
+    @return map-get($bf-colors, $key);
+  }
+
+  @function bf-font($key: "first") {
+    @return map-get($bf-fonts, $key);
+  }
+
+  @mixin flex($value) {
+    flex: 0 0 $value;
+    max-width: $value;
+  }
+
+  @mixin text-gradient($dir, $from, $to) {
+    background: -webkit-linear-gradient($dir, $from, $to);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
 	@mixin columns($qtd: 2) {
 		@include media-breakpoint-down(sm) {
 			-webkit-column-count: $qtd;
@@ -75,6 +105,11 @@
 	  -moz-border-radius: $px;
 	  -ms-border-radius: $px;
 	  border-radius: $px;
+  }
+  
+  @mixin pseudo() {
+    display: block;
+    content: '';
 	}
 
 	@mixin placeholder {
@@ -82,7 +117,24 @@
 	  &:-moz-placeholder { @content; }
 	  &::-moz-placeholder { @content; }
 	  &::-webkit-input-placeholder { @content; }
-	}
+  }
+
+  @mixin global-animation() {
+    animation-fill-mode: both;
+  }
+  
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(180deg) scale(0.6);
+    }
+    100% {
+     transform: rotate(360deg) scale(1);
+   }
+  }
 
 	@-webkit-keyframes load {
 	  0%, 80%, 100% {
@@ -104,3 +156,12 @@
 	  }
 	}
 /* ----------------------------------------- general mixins and functions */
+
+/* 	custom container widths  */
+/* ----------------------------------------- */
+$f-xs: 100%;
+$f-sm: map-get($container-max-widths, 'sm');
+$f-md: map-get($container-max-widths, 'ms');
+$f-lg: map-get($container-max-widths, 'lg');
+$f-xl: map-get($container-max-widths, 'xl');
+/* ----------------------------------------- 	custom container widths */

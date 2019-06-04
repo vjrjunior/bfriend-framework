@@ -15,7 +15,8 @@
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1P-H_fyEh6IaGS_mdIAPnMUIiQhKON2s"></script>
     <?php wp_head(); ?>
 	</head>
-	<body <?php body_class(); ?>>
+  <body <?php body_class(); ?>>
+    <div class="preloader"><div class="preloader__loader"><?php for ($i = 1; $i <= 2; $i++) { echo '<div></div>'; } ?></div></div>
 
     <header class="main-header">
       <div class="container">

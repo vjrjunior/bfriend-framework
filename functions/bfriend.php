@@ -401,3 +401,58 @@ class Mais_Lidos extends WP_Widget {
 
 }
 add_action( 'widgets_init', function() { register_widget( 'Mais_Lidos' ); });
+
+// change post class for into posts
+function custom_post_class( $classes, $class, $post_id ) {
+  if ( is_home() ) {
+    $classes[] = 'block__post--into';
+  }
+  return $classes;
+}
+add_filter( 'post_class', 'custom_post_class', 10, 3 );
+
+// change recent posts widget
+Class My_Recent_Posts_Widget extends WP_Widget_Recent_Posts {
+  function widget($args, $instance) {
+    extract( $args );
+    
+    $title = apply_filters('widget_title', empty($instance['title']) ? __('Recent Posts') : $instance['title'], $instance, $this->id_base);
+        
+    if( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
+      $number = 10;
+          
+    $r = new WP_Query( apply_filters( 'widget_posts_args', array( 'posts_per_page' => $number, 'no_found_rows' => true, 'post_status' => 'publish', 'ignore_sticky_posts' => true ) ) );
+    if( $r->have_posts() ) :
+      
+      echo $before_widget;
+      if( $title ) echo $before_title . $title . $after_title; 
+  ?>
+    <ul class="recent-posts">
+      <?php $i=1; while( $r->have_posts() ) : $r->the_post(); ?>				
+        <li class="media">
+          <a href="<?php the_permalink(); ?>" title="Saiba mais: <?php the_title(); ?>" aria-hidden="true" tabindex="-1" class="mr-3">
+            <figure class="mb-0">
+              <?php the_post_thumbnail( 'thumbnail', ['class' => 'img-fluid'] ); ?>
+              <span class="count"><?php echo $i.'.'; ?></span>
+              <span class="mask"></span>
+            </figure>
+          </a>
+          <span class="media-body">
+            <a href="<?php the_permalink(); ?>" class="title" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+            <time class="mb-2 d-flex align-items-center"><i class="icon icon-calendar mr-2"></i><?php the_time('d \d\e F \d\e Y'); ?></time>
+          </span>
+        </li>
+      <?php $i++; endwhile; ?>
+    </ul>
+  <?php
+      echo $after_widget;
+      wp_reset_postdata();
+    
+    endif;
+  }
+}
+add_action('widgets_init', 'bfriend_recent_widget_registration');
+function bfriend_recent_widget_registration() {
+  unregister_widget('WP_Widget_Recent_Posts');
+  register_widget('My_Recent_Posts_Widget');
+}

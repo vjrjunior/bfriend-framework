@@ -1,5 +1,7 @@
 @import "bfriend-mixins";
 
+body.preload { overflow: hidden; }
+
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6,
 a, ul, ul li, ol, ol li, input, textarea, span, p, label, button {
 	font-family: $font-pri;
@@ -24,6 +26,57 @@ a, img, input, button {
 	text-decoration: none !important;
 }
 /* ----------------------------------------- elements with transition */	
+
+/* 	preloader  */
+/* ----------------------------------------- */
+.preloader {
+  position: fixed;
+  top: 0; right: 0; left: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1050;
+  display: block !important;
+  
+  &__loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  
+    > div {
+      @include global-animation();
+  
+      position: absolute;
+      left: -20px;
+      top: -20px;
+      border: 2px solid $color-pri;
+      border-bottom-color: transparent;
+      border-top-color: transparent;
+      border-radius: 100%;
+      height: 35px;
+      width: 35px;
+      animation: rotate 1s 0s ease-in-out infinite;
+  
+      &:last-child {
+        display: inline-block;
+        top: -10px;
+        left: -10px;
+        width: 15px;
+        height: 15px;
+        animation-duration: 0.5s;
+        border-color: $color-pri transparent $color-pri transparent;
+        animation-direction: reverse;
+      }
+    }
+  }
+}
+/* ----------------------------------------- 	preloader */
 
 /* embed container */
 /* ----------------------------------------- */
@@ -381,3 +434,56 @@ a, img, input, button {
   }
 }
 /* ----------------------------------------- wp wysiwyg styles */	
+
+/* 	custom full grid  */
+/* ----------------------------------------- */
+.full-right {
+  display: flex;
+  max-width: calc(100vw - ((100vw - #{$f-xs}) / 2));
+  margin-left: auto;
+  
+  .collumn-3,
+  .collumn-9 {
+    padding: 0 15px;
+  }
+  
+  .collumn-3 {
+    flex: 0 0 calc(#{$f-xs} * .20);
+    max-width: calc(#{$f-xs} * .20);
+  }
+  .collumn-9 {
+    flex: 0 0 calc(100% - (#{$f-xs} * .20));
+    max-width: calc(100% - (#{$f-xs} * .20));
+  }
+
+  @include media-breakpoint-up(sm) { max-width: calc(100vw - ((100vw - #{$f-sm}) / 2)); }
+  @include media-breakpoint-up(md) { max-width: calc(100vw - ((100vw - #{$f-md}) / 2)); }
+  @include media-breakpoint-up(lg) { max-width: calc(100vw - ((100vw - #{$f-lg}) / 2)); }
+  @include media-breakpoint-up(xl) { max-width: calc(100vw - ((100vw - #{$f-xl}) / 2)); }
+}
+
+.full-left {
+  display: flex;
+  max-width: calc(100vw - ((100vw - #{$f-xs}) / 2));
+  margin-right: auto;
+  
+  .collumn-3,
+  .collumn-9 {
+    padding: 0 15px;
+  }
+  
+  .collumn-3 {
+    flex: 0 0 calc(#{$f-xs} * .20);
+    max-width: calc(#{$f-xs} * .20);
+  }
+  .collumn-9 {
+    flex: 0 0 calc(100% - (#{$f-xs} * .20));
+    max-width: calc(100% - (#{$f-xs} * .20));
+  }
+
+  @include media-breakpoint-up(sm) { max-width: calc(100vw - ((100vw - #{$f-sm}) / 2)); }
+  @include media-breakpoint-up(md) { max-width: calc(100vw - ((100vw - #{$f-md}) / 2)); }
+  @include media-breakpoint-up(lg) { max-width: calc(100vw - ((100vw - #{$f-lg}) / 2)); }
+  @include media-breakpoint-up(xl) { max-width: calc(100vw - ((100vw - #{$f-xl}) / 2)); }
+}
+/* ----------------------------------------- 	custom full grid */

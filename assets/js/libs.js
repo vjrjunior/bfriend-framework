@@ -1,8 +1,5 @@
 /* bsnav */
 /* ----------------------------------------- */
-/*------------------------------------------------------------*/
-/*	BSNAV
-/*------------------------------------------------------------*/
 (function($){
 	"use strict";
 
@@ -18,13 +15,7 @@
 			this.scrollspy();
 		},
 
-
-
-
 		event : function(){},
-
-
-
 
 		toggler : function(){
 			$('.navbar-toggler').each(function(){
@@ -39,10 +30,6 @@
 			});
 		},
 
-
-
-
-
 		dropdown : function(){
 
 			$('.bsnav .nav-item.dropdown')
@@ -54,10 +41,6 @@
 			});
 
 		},
-
-
-
-
 
 		mobileMenu : function(){
 
@@ -95,10 +78,6 @@
 
 		},
 
-
-
-
-
 		sideMenu : function(){
 
 			if( $('.bsnav-sidebar')[0] ){
@@ -113,10 +92,6 @@
 			}
 
 		},
-
-
-
-
 
 		sideMenuNavigation : function(el){
 
@@ -148,9 +123,6 @@
 
 		},
 
-
-
-
 		navbarSticky : function(){
 
 			var sticky = function(el, limit, scrolltop){
@@ -176,8 +148,6 @@
 			}
 
 		},
-
-
 
 		scrollspy : function(){ 
 
@@ -210,8 +180,6 @@
 					});
 				}
 
-
-
 				function scrollSpy(){
 					if( !_nav.hasClass('spying') ){
 						var _winScroll = $(window).scrollTop();
@@ -228,28 +196,20 @@
 					}
 				}
 
-
-
 				$(window).scroll(function() {
 					scrollSpy();
 				});
 				navOffset();
 
-
 			}
 		}
 
-
 	};
-
-
-
 
 	// Initialize
 	$(document).ready(function(){
 		bsnav.initialize();
 	});
-
 
 }(jQuery));
 /* ----------------------------------------- bsnav */		
