@@ -8,9 +8,7 @@ require_once ('functions/wp-admin.php');
 require_once ('functions/bfriend.php');
 require_once ('functions/bfriend-acf.php');
 require_once ('functions/bfriend-functions.php');
+require_once ('functions/bfriend-blocks.php');
 
 // wordpress navwalker
 require_once ('functions/wp_bootstrap_navwalker.php');
-
-// register custom post type
-// require_once ('includes/cpt-type.php');

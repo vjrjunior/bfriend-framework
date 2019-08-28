@@ -66,8 +66,12 @@
 					}
 				}
 			]
-		});
-
+    });
+    
+    // woo
+    $('.col2-set').toggleClass('row');
+    $('.col-1').toggleClass('col-md-6');
+    $('.col-2').toggleClass('col-md-6');
 
 		/*  Default Scripts */
 		/* ----------------------------------------- */

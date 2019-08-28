@@ -85,6 +85,108 @@
 		"oAP": "\/assets\/css\/min\/login-style.css.map",
 		"oF": 0
 		},
+	"\/assets\/css\/min\/select2-min.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/assets\/css\/min\/select2-min-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"\/assets\/css\/min\/woocommerce-layout-min.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/assets\/css\/min\/woocommerce-layout-min-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"\/assets\/css\/min\/woocommerce-min.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/assets\/css\/min\/woocommerce-min-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"\/assets\/css\/min\/woocommerce-smallscreen-min.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/assets\/css\/min\/woocommerce-smallscreen-min-min.css",
+		"oF": 0,
+		"oS": 3
+		},
+	"\/assets\/fonts\/star.eot": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/assets\/fonts\/star.eot",
+		"oF": 0
+		},
+	"\/assets\/fonts\/star.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/assets\/fonts\/star.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/assets\/fonts\/star.ttf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/assets\/fonts\/star.ttf",
+		"oF": 0
+		},
+	"\/assets\/fonts\/star.woff": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/assets\/fonts\/star.woff",
+		"oF": 0
+		},
+	"\/assets\/fonts\/WooCommerce.eot": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/assets\/fonts\/WooCommerce.eot",
+		"oF": 0
+		},
+	"\/assets\/fonts\/WooCommerce.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/assets\/fonts\/WooCommerce.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
+	"\/assets\/fonts\/WooCommerce.ttf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/assets\/fonts\/WooCommerce.ttf",
+		"oF": 0
+		},
+	"\/assets\/fonts\/WooCommerce.woff": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/assets\/fonts\/WooCommerce.woff",
+		"oF": 0
+		},
 	"\/assets\/images\/bfriend.svg": {
 		"ft": 2097152,
 		"miP": 0,
@@ -162,6 +264,13 @@
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
+		},
+	"\/assets\/json\/index.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/assets\/json\/index.php",
+		"oF": 0
 		},
 	"\/assets\/scss\/_bfriend-mixins.scss": {
 		"aP": 0,
@@ -839,6 +948,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/assets\/scss\/bootstrap\/mixins\/_deprecate.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/assets\/scss\/bootstrap\/css\/_deprecate.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/assets\/scss\/bootstrap\/mixins\/_float.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -1294,6 +1416,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/assets\/scss\/bootstrap\/utilities\/_stretched-link.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/assets\/scss\/bootstrap\/css\/_stretched-link.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/assets\/scss\/bootstrap\/utilities\/_text.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -1316,6 +1451,19 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "\/assets\/scss\/bootstrap\/css\/_visibility.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/assets\/scss\/bootstrap\/vendor\/_rfs.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/assets\/scss\/bootstrap\/css\/_rfs.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -1619,6 +1767,110 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/assets\/scss\/woo\/_animation.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/assets\/scss\/css\/_animation.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/assets\/scss\/woo\/_fonts.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/assets\/scss\/css\/_fonts.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/assets\/scss\/woo\/_mixins.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/assets\/scss\/css\/_mixins.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/assets\/scss\/woo\/_variables.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/assets\/scss\/css\/_variables.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/assets\/scss\/woo\/select2.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/assets\/css\/min\/select2-min.css",
+		"oF": 2,
+		"oS": 3,
+		"uL": 1
+		},
+	"\/assets\/scss\/woo\/woocommerce-layout.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/assets\/css\/min\/woocommerce-layout-min.css",
+		"oF": 2,
+		"oS": 3,
+		"uL": 1
+		},
+	"\/assets\/scss\/woo\/woocommerce-smallscreen.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/assets\/css\/min\/woocommerce-smallscreen-min.css",
+		"oF": 2,
+		"oS": 3,
+		"uL": 1
+		},
+	"\/assets\/scss\/woo\/woocommerce.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/assets\/css\/min\/woocommerce-min.css",
+		"oF": 2,
+		"oS": 3,
+		"uL": 1
+		},
 	"\/comments.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -1687,6 +1939,13 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/functions\/bfriend-acf.php",
+		"oF": 0
+		},
+	"\/functions\/bfriend-blocks.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/functions\/bfriend-blocks.php",
 		"oF": 0
 		},
 	"\/functions\/bfriend-functions.php": {
@@ -1808,6 +2067,13 @@
 		"oAP": "\/partials\/_wrap-start.php",
 		"oF": 0
 		},
+	"\/partials\/blocks\/slideshow\/_full.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/partials\/blocks\/slideshow\/_full.php",
+		"oF": 0
+		},
 	"\/README.md": {
 		"cB": 0,
 		"cS": 0,
@@ -1885,7 +2151,7 @@
 	},
 "projectAttributes": {
 	"creationDate": 528384724,
-	"displayValue": "bfriend-framework",
+	"displayValue": "bfriend-framework-woo",
 	"displayValueWasSetByUser": 0,
 	"iconImageName": "meme-facepalm",
 	"iconImageWasSetByUser": 0

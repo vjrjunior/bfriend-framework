@@ -7146,8 +7146,7 @@ a, img, input, button {
   background: white;
   width: 100vw;
   height: 100vh;
-  z-index: 1050;
-  display: block !important; }
+  z-index: 1050; }
   .preloader__loader {
     position: absolute;
     top: 50%;

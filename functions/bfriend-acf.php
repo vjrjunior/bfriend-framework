@@ -41,3 +41,18 @@ function acf_sub_thumbnail_bg( $nomeField ) {
   }
   echo 'style="background-image: url('. $src .' );"';
 }
+
+// json sync
+add_filter('acf/settings/save_json', 'bf_acf_json_save_point');
+function bf_acf_json_save_point( $path ) {  
+  $path = get_stylesheet_directory() . '/assets/json';
+  return $path;
+}
+
+add_filter('acf/settings/load_json', 'bf_acf_json_load_point');
+
+function bf_acf_json_load_point( $paths ) {
+  unset($paths[0]);
+  $paths[] = get_stylesheet_directory() . '/assets/json';
+  return $paths;   
+}
