@@ -1,9 +1,8 @@
 <?php
   get_header();
 
-    get_template_part( 'partials/_slideshow' );
-    get_template_part('partials/_wrap-start');
-  	  the_content();
-  	get_template_part('partials/_wrap-end');
+    _partial( '_slideshow' );
+    _partial( '_wrap-start' );
+    _partial( '_wrap-end' );
 
   get_footer();

@@ -1,4 +1,11 @@
-<div class="h-page" <?php if ( is_singular('post') || is_home() ) { thumbnail_bg_posts('header-full'); } else { thumbnail_bg( 'header-full' ); } ?>>
+<div class="s__h-page" 
+  <?php 
+    if ( is_singular('post') || is_home() ) { 
+      thumbnail_bg_posts('header-full'); 
+    } else { 
+      thumbnail_bg( 'header-full' ); 
+    } 
+  ?>>
   <div class="container">
     <?php
       if (is_home() || is_singular('post')) :
@@ -13,10 +20,6 @@
   </div>
 
   <div class="container">
-    <?php
-      if ( function_exists('yoast_breadcrumb') ) :
-        yoast_breadcrumb(' <p id="breadcrumbs">','</p> ');
-      endif;
-    ?>
+    <?php if (function_exists('rank_math_the_breadcrumbs')) rank_math_the_breadcrumbs(); ?>
   </div>
 </div>

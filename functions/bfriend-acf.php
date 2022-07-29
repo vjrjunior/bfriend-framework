@@ -1,7 +1,7 @@
 <?php
 // key acf google maps
 function bfriend_acf_init() {
-  acf_update_setting('google_api_key', 'AIzaSyB1P-H_fyEh6IaGS_mdIAPnMUIiQhKON2s');
+  acf_update_setting('google_api_key', 'AIzaSyBiiSp9noWQYHvt1mFbgNhL8IKtjfmUM5g');
 }
 add_action('acf/init', 'bfriend_acf_init');  
 
@@ -50,7 +50,6 @@ function bf_acf_json_save_point( $path ) {
 }
 
 add_filter('acf/settings/load_json', 'bf_acf_json_load_point');
-
 function bf_acf_json_load_point( $paths ) {
   unset($paths[0]);
   $paths[] = get_stylesheet_directory() . '/assets/json';

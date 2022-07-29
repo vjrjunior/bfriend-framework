@@ -1,0 +1,366 @@
+.wpcf7 {
+  .screen-reader-response {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    width: 1px; height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    word-wrap: normal !important;
+  }
+}
+
+.wpcf7 {
+  form {
+    .wpcf7-response-output {
+      margin: 2em 0.5em 1em;
+      padding: 0.2em 1em;
+      border: 2px solid #00a0d2;
+    }
+
+    &.init .wpcf7-response-output,
+    &.resetting .wpcf7-response-output,
+    &.submitting .wpcf7-response-output {
+      display: none;
+    }
+
+    &.sent .wpcf7-response-output {
+      border-color: #46b450; /* Green */
+    }
+    
+    &.failed .wpcf7-response-output,
+    &.aborted .wpcf7-response-output {
+      border-color: #dc3232; /* Red */
+    }
+    
+    &.spam .wpcf7-response-output {
+      border-color: #f56e28; /* Orange */
+    }
+    
+    &.invalid .wpcf7-response-output,
+    &.unaccepted .wpcf7-response-output,
+    &.payment-required .wpcf7-response-output {
+      border-color: #ffb900; /* Yellow */
+    }
+  }
+
+  input[type="file"] {
+    cursor: pointer;
+  }
+  
+  input[type="file"]:disabled {
+    cursor: default;
+  }
+  
+  .wpcf7-submit:disabled {
+    cursor: not-allowed;
+  }
+  
+  input[type="url"],
+  input[type="email"],
+  input[type="tel"] {
+    direction: ltr;
+  }
+}
+
+.wpcf7-form-control-wrap {
+	position: relative;
+}
+
+.wpcf7-not-valid-tip {
+	color: #dc3232; /* Red */
+	font-size: 1em;
+	font-weight: normal;
+	display: block;
+}
+
+.use-floating-validation-tip {
+  .wpcf7-not-valid-tip {
+    position: relative;
+    top: -2ex;
+    left: 1em;
+    z-index: 100;
+    border: 1px solid #dc3232;
+    background: #fff;
+    padding: .2em .8em;
+    width: 24em;
+  }
+}
+
+.wpcf7-list-item {
+	display: inline-block;
+	margin: 0 0 0 1em;
+
+  &-label {
+    &::before,
+    &::after {
+      content: " ";
+    }
+  }
+}
+
+.wpcf7-spinner {
+	visibility: hidden;
+	display: inline-block;
+	background-color: #23282d; /* Dark Gray 800 */
+	opacity: 0.75;
+	width: 24px;
+	height: 24px;
+	border: none;
+	border-radius: 100%;
+	padding: 0;
+	margin: 0 24px;
+	position: relative;
+}
+
+form.submitting {
+  .wpcf7-spinner {
+    visibility: visible;
+
+    &::before {
+      content: '';
+      position: absolute;
+      background-color: #fbfbfc; /* Light Gray 100 */
+      top: 4px;
+      left: 4px;
+      width: 6px;
+      height: 6px;
+      border: none;
+      border-radius: 100%;
+      transform-origin: 8px 8px;
+      animation-name: spin;
+      animation-duration: 1000ms;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wpcf7-spinner::before {
+		animation-name: blink;
+		animation-duration: 2000ms;
+	}
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes blink {
+	from {
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+/* contact form */
+/* ----------------------------------------- */
+.wpcf7 {
+	position: relative;
+
+	.wpcf7-response-output {
+		font-family: bf-font('pri');
+		padding: 10px 0;
+		text-align: center;
+    margin: 1rem 0 1.5rem;
+    border: 1px solid $color-pri;
+    color: bf-color('pri');
+	}
+
+	.wpcf7-not-valid-tip { display: none; }
+
+	.ajax-loader {
+		background-image: none !important;
+		position: absolute;
+		bottom: 0; left: 50%;
+		width: 0.5em !important;
+		height: 1em !important;
+		background: $color-pri;
+		color: $color-pri;
+		text-indent: -9999em;
+		margin: auto !important;
+		animation-delay: -0.16s;
+		-webkit-animation-delay: -0.16s;
+		transform: translate(-50%,-50%) scale(.3);
+    -webkit-transform: translate(-50%,-50%) scale(.3);
+    @include font(14px);
+
+    &,
+    &:before,
+    &:after {
+      width: 0.5em; height: 1em;
+      animation: load 1s infinite ease-in-out;
+      -webkit-animation: load 1s infinite ease-in-out;
+    }
+
+		&:before, &:after {
+			background: $color-pri;
+			position: absolute;
+			top: 0;
+			content: '';
+		}
+
+		&:before {
+			left: -1.5em;
+			animation-delay: -0.32s;
+			-webkit-animation-delay: -0.32s;
+		}
+		
+		&:after { left: 1.5em; }
+	}
+
+	p {
+		position: relative;
+		
+		&:not(.normal) {
+			width: 100%;
+			margin: 0 0 25px;
+		}
+
+		.wpcf7-form-control-wrap { display: block; }
+  }
+  
+  label {
+		width: 100%;
+    margin: 0;
+    color: bf-color('pri');
+    @include font(16px);
+    
+    &:not(.normal),
+    &:not(.error) {
+      margin: 0;
+      position: absolute;
+      top: 25px; left: 20px;
+      width: calc(100% - 20px);
+      z-index: 10;
+      pointer-events: none;
+      text-align: left;
+      transform: translateY(-50%);
+      @include transition(top .2s);       
+  
+      &.has-value {
+        top: -9px;
+        @include font(12px);
+      }
+    }
+	}
+
+	.line {
+		position: absolute;
+		left: 0; bottom: 0;
+		height: 1px;
+		background-color: bf-background('pri');
+		width: 0;
+		@include transition(width 0.2s);
+
+		&.has-value { width: 100%; }
+	}
+
+	input:not([type='radio']), textarea {
+    width: 100%;
+    height: 50px;
+		border: 1px solid #D2D2D2;
+		padding: .5rem 1rem;
+		line-height: 1.5;
+		outline: none;
+		color: bf-color('pri');
+
+		&.wpcf7-not-valid { border-color: $color-pri; }
+  }
+  
+  textarea { height: 150px; }
+
+	input[type="date"] {
+		appearance: none;
+		color: transparent;
+
+		&.val {
+			color: bf-color('pri');
+			&::-webkit-datetime-edit-text {
+				color: bf-color('pri');
+			}
+		}
+
+		&::-webkit-inner-spin-button {  display: none; }
+
+		&::-webkit-datetime-edit-text { color: transparent; }
+
+		&::-webkit-calendar-picker-indicator {
+			color: #BABCBF;
+			background: transparent;
+			height: 6px;
+			opacity: 1;
+			visibility: visible;
+			display: block;
+		}
+	}
+
+	.box-file {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		position: relative;
+    margin-bottom: 1rem;
+    
+    .btn-file {
+      position: relative;
+      max-width: 195px;
+      cursor: pointer;
+      float: left;
+      margin: 0 15px 0 0;
+      padding: 10px 20px;
+      @include normal;
+      @include transition(all 150ms ease-in-out);
+  
+      i { margin: 0 10px 0 0; }
+  
+      &:hover {
+        color: $color-qua;
+        background: $color-pri;
+      }
+  
+      span.wpcf7-not-valid-tip {
+        display: block;
+        position: absolute;
+        bottom: -35px;
+        left: -20px;
+        width: 280px;
+      }
+  
+      input[type=file] {
+        padding: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        display: block;
+      }
+    }
+	}
+
+	button {
+		cursor: pointer;
+
+    &:focus { outline: none; }
+	}
+}
+/* ----------------------------------------- contact form */	

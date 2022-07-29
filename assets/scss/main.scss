@@ -2,25 +2,44 @@
 @import "bootstrap/mixins";
 @import "bfriend-mixins";
 @import "bfriend-styles";
+@import "bsnav/bsnav";
+@import "slick/slick-theme";
+@import "slick/slick";
+@import "contact-form";
 
 /* general  */
 /* ----------------------------------------- */
+body {
+  color: bf-color('pri');
+}
+
+.icon { display: inline-block; }
 /* ----------------------------------------- general */
 
 /* header */
 /* ----------------------------------------- */
-  .main-header {}
+  .main-header {
+    .navbar {
+      background-color: transparent;
+      padding: 0;
+    }
+  }
 /* ----------------------------------------- header */
 
-/* slideshow */
+/* sections */
 /* ----------------------------------------- */
-  .slideshow {}
-/* ----------------------------------------- slideshow */
+  .s {}
+/* ----------------------------------------- sections */
 
-/* content */
+/* blocks */
 /* ----------------------------------------- */
-  main#content {}
-/* ----------------------------------------- content */
+  .block {}
+/* ----------------------------------------- blocks */
+
+/* pages */
+/* ----------------------------------------- */
+  .p {}
+/* ----------------------------------------- pages */
 
 /* footer */
 /* ----------------------------------------- */

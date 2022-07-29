@@ -1,13 +1,4 @@
 <?php
-/**
- * Filter Yoast Meta Priority
- *
- * @since Bfriend 4.0
- */
-/* -------------------------------------------------- */
-function lower_wpseo_priority( $html ) { return 'low'; }
-add_filter( 'wpseo_metabox_prio', 'lower_wpseo_priority' );
-
 /* WP-LOGIN */
 /* ----------------------------------------- */
 // Call wp-login Styles
@@ -15,10 +6,10 @@ add_action( 'login_head', 'wpmidia_custom_login' );
 // Change URL logotype
 add_filter('login_headerurl', 'wpmidia_custom_wp_login_url');
 // Change title logotype
-add_filter('login_headertitle', 'wpmidia_custom_wp_login_title');
+add_filter('login_headertext', 'wpmidia_custom_wp_login_title');
 function wpmidia_custom_login() {
-  echo '<link media="all" type="text/css" href="'.get_template_directory_uri().'/assets/css/min/login-style.css" rel="stylesheet">';
-  $logo = get_field('logo', 'option');
+  echo '<link media="all" type="text/css" href="'.get_template_directory_uri().'/assets/css/login-style.css" rel="stylesheet">';
+  $logo = wp_get_attachment_url( get_field('logo', 'option') );
   if ($logo) {
   ?>
     <style type="text/css" media="screen">
@@ -38,18 +29,6 @@ function wpmidia_custom_wp_login_title() {
   return get_option('blogname');
 }
 /* ----------------------------------------- WP-LOGIN */
-
-/* Mudar Icone dos Menus do WP */
-/* ----------------------------------------- */
-// Pegar o unicode na url -> http://fontawesome.bootstrapcheatsheets.com/
-// add_action('admin_head', 'fontawesome_icon_dashboard');
-function fontawesome_icon_dashboard() {
-   echo "<style type='text/css' media='screen'>
-      #adminmenu #menu-posts-produto div.wp-menu-image:before { font-family:'FontAwesome' !important; content:'\\f0a4'; }
-   </style>";
-}
-/* ----------------------------------------- Mudar Icone do CPT */
-
 
 /* Desativa os widgets padrões do dashboard */
 /* ----------------------------------------- */
@@ -143,11 +122,29 @@ function my_mce4_options($init) {
 add_filter('tiny_mce_before_init', 'my_mce4_options');
 
 // allow upload extra filetypes
-function extra_upload_files($mimes) {
+function allow_svg($mimes) {
   $mimes['svg'] = 'image/svg+xml';
+  $mimes['svgz'] = 'image/svg+xml';
   return $mimes;
 }
-add_filter('upload_mimes', 'extra_upload_files');
+add_filter('upload_mimes', 'allow_svg');
+
+function fix_mime_type_svg($data = null, $file = null, $filename = null, $mimes = null) {
+  $ext = isset($data['ext']) ? $data['ext'] : '';
+  if (strlen($ext) < 1) {
+    $exploded=explode('.', $filename);
+    $ext=strtolower(end($exploded));
+  }
+  if ($ext==='svg') {
+    $data['type']='image/svg+xml' ;
+    $data['ext']='svg' ;
+  } elseif ($ext==='svgz') {
+    $data['type']='image/svg+xml' ;
+    $data['ext']='svgz' ;
+  }
+  return $data;
+}
+add_filter('wp_check_filetype_and_ext', 'fix_mime_type_svg', 75, 4);
 
 
 // default theme for users

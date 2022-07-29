@@ -15,22 +15,22 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-2">
-					<a id="logotipo" class="logotipo d-inline-block" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-						<img src="<?php echo get_field('logo_footer', 'option'); ?>" class="img-fluid" />
+					<a class="logo d-inline-block" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+            <?php echo wp_get_attachment_image( get_field('logo', 'option'), 'full', false, ['class' => 'img-fluid' ] ); ?>
 					</a>
 				</div>
 			</div>
 		</div>
 
 		<div class="main-footer__copy">
-			<div class="container d-flex justify-content-between">
+			<div class="container d-flex flex-column flex-md-row align-items-center align-items-md-start justify-content-md-between text-center text-md-left">
         <p>© Copyright <?php echo date('Y') ?> - <?php bloginfo( 'name' ); ?> - Todos direitos reservados.</p>
-				<?php get_template_part( 'partials/_bfriend' ); ?>
+				<?php _partial( '_bfriend' ); ?>
 			</div>
 		</div>
 	</footer>
 
+<?php if ( is_page(11) ) : ?><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiiSp9noWQYHvt1mFbgNhL8IKtjfmUM5g"></script><?php endif; ?>
 <?php wp_footer(); ?>
-<script>jQuery(document).ready(function($) { jQuery('body').addClass('preload'); }); jQuery(window).load(function() { jQuery('.preloader').fadeOut(500); jQuery('body').removeClass('preload'); });</script>
 </body>
 </html>

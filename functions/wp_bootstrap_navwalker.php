@@ -21,7 +21,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
-		$output .= "\n$indent<ul role=\"menu\" class=\"navbar-nav\">\n";
+		$output .= "\n$indent<ul role=\"menu\" class=\"dropdown-menu navbar-nav\">\n";
 	}
 
 	/**
@@ -63,7 +63,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
 
 			if ( $args->has_children )
-				$class_names .= ' dropdown';
+				$class_names .= ' dropdown fadeup';
 
 			if ( in_array( 'current-menu-item', $classes ) )
 				$class_names .= ' active';
@@ -80,12 +80,13 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			$atts['title']  = ! empty( $item->title )	? $item->title	: '';
 			$atts['target'] = ! empty( $item->target )	? $item->target	: '';
 			$atts['rel']    = ! empty( $item->xfn )		? $item->xfn	: '';
+      // $atts['href'] = ! empty( $item->url ) ? $item->url : '';
 
 			// If item has_children add atts to a.
 			if ( $args->has_children && $depth === 0 ) {
 				$atts['href']   		= '#';
-				$atts['data-toggle']	= 'dropdown';
-				$atts['class']			= 'nav-link';
+				$atts['data-bs-toggle']	= 'dropdown';
+				$atts['class']			= 'nav-link dropdown-toggle';
 				$atts['aria-haspopup']	= 'true';
 			} else {
 				$atts['href'] = ! empty( $item->url ) ? $item->url : '';
@@ -116,7 +117,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 				$item_output .= '<a'. $attributes .'>';
 
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-			$item_output .= ( $args->has_children && 0 === $depth ) ? '<i class="caret"></i></a>' : '</a>';
+			$item_output .= ( $args->has_children && 0 === $depth ) ? '<i class="icon icon-chevron-down-ter ms-2"></i></a>' : '</a>';
 			$item_output .= $args->after;
 
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );

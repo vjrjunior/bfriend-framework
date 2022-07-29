@@ -10,8 +10,7 @@
 	border-radius: 0;
 	cursor: pointer;
 
-
-
+  &:focus { outline: none; }
 
 	.navbar-toggler-icon{
 		display: block;
@@ -175,7 +174,7 @@
 		&.active{
       .navbar-toggler-icon{
 				transition-delay: 0.22s;
-        background-color: transparent;
+        background-color: transparent !important;
 
         &::before {
           top: 0;

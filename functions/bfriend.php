@@ -1,6 +1,8 @@
 <?php
-// support title
-add_theme_support( 'title-tag' );
+// define theme constants
+function _partial($file) { include BF_PARTIALS_PATH . $file.'.php'; }
+function _content($file) { include BF_CONTENTS_PATH . $file.'.php'; }
+function _loop($file)    { include BF_LOOPS_PATH . $file.'.php'; }
 
 // custom image sizes
 add_action('init', 'bfriend_custom_image_sizes');
@@ -98,16 +100,16 @@ function get_images_url($file) {
 }
 
 // related posts
-function bfriend_related( $args = [] ) { 
+function bf_related( $args = [] ) { 
   global $post;
   $postTypeObj = get_post_type_object($post->post_type);    
   $taxonomies = isset($args['taxonomies']) ? $args['taxonomies'] : $postTypeObj->taxonomies;
   
-  $defaultargsQuery = $argsQuery = array(       
-    'post__not_in' => array($post->ID), 
-    'post_type' => $post->post_type,
-    'posts_per_page' => (isset($args['posts_per_page']) ? $args['posts_per_page'] : 3), 
-  );
+  $defaultargsQuery = $argsQuery = [
+    'post__not_in'   => [$post->ID], 
+    'post_type'      => $post->post_type,
+    'posts_per_page' => (isset($args['posts_per_page']) ? $args['posts_per_page'] : 3),
+  ];
 
   $terms = wp_get_post_terms($post->ID, $taxonomies, ['fields' => 'ids']);
   $argsQuery['tax_query'] = [[
@@ -122,12 +124,13 @@ function bfriend_related( $args = [] ) {
   } 
 
   if( $relatedPostsQuery->have_posts() ) {
-    echo '<div id="post-relacionados">',
-      '<h4 class="title"><i></i>'.(isset($args['title']) ? $args['title'] : 'Leia Também:').'</h4>',
-      '<div class="items">';                      
+    echo '<div id="s s__related">',
+      '<h4 class="s-title">'.(isset($args['title']) ? $args['title'] : 'Leia Também:').'</h4>',
+      '<div class="items">';
         while ( $relatedPostsQuery->have_posts() ) : $relatedPostsQuery->the_post();
-          get_template_part( 'contents/_loop' );
+          _loop( 'loop-index' );
         endwhile;
+
     echo '</div>',
     '</div>';
   }
@@ -202,12 +205,12 @@ function fixed_img_caption_shortcode($attr, $content = null) {
   if ( $output != '' )
     return $output;
 
-  extract(shortcode_atts(array(
-    'id'    => '',
+  extract(shortcode_atts([
+    'id'      => '',
     'align'   => 'alignnone',
     'width'   => '',
     'caption' => ''
-  ), $attr));
+  ], $attr));
 
   if ( 1 > (int) $width || empty($caption) )
     return $content;
@@ -221,7 +224,7 @@ function fixed_img_caption_shortcode($attr, $content = null) {
 // filter for responsive embed container
 add_filter('embed_oembed_html', 'wrap_embed_with_div', 10, 3);
 function wrap_embed_with_div($html, $url, $attr) {
-  return "<div class=\"embed-responsive\">".$html."</div>";
+  return "<div class=\"embed-container\">".$html."</div>";
 }
 
 // custom widget
@@ -254,9 +257,9 @@ class Custom_Widget extends WP_Widget {
     while ( have_rows('banners_widget', 'widget_' . $args['widget_id']) ) : the_row();
     
       $titulo = get_sub_field('titulo_banner');
-      $image = get_sub_field('img_banner');
-      $texto = get_sub_field('texto_banner');
-      $url = get_sub_field('link_banner');
+      $image  = get_sub_field('img_banner');
+      $texto  = get_sub_field('texto_banner');
+      $url    = get_sub_field('link_banner');
         echo '<div class="box-banner" style="background-image: url('. $image['sizes']['banner-thumb'] .')">',
                 '<a href="'. $url .'">';
           if( !empty($titulo) ) :
@@ -313,9 +316,6 @@ class Custom_Widget extends WP_Widget {
 add_action( 'widgets_init', function() { register_widget( 'Custom_Widget' ); });
 
 class Mais_Lidos extends WP_Widget {
-  /**
-   * Registrando widget para campos acf
-   */
   function __construct() {
     parent::__construct(
       'popular_widget',
@@ -337,25 +337,27 @@ class Mais_Lidos extends WP_Widget {
     if ( !empty($instance['title']) ) {
       echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
     }
-      $my_query = new WP_Query( array( 'post_type' => 'post', 'orderby' => 'meta_value_num', 'order' => 'DESC', 'posts_per_page' => 8  ) ); 
-      echo '<div class="widget mais-acessados">';
-      echo '<h3><i class="fa fa-heart"></i> Mais lidos</h3>';
 
-      while ( $my_query->have_posts() ) : $my_query->the_post(); 
+    $my_query = new WP_Query( array( 'post_type' => 'post', 'orderby' => 'meta_value_num', 'order' => 'DESC', 'posts_per_page' => 8  ) ); 
+    echo '<div class="widget mais-acessados">',
+            '<h2>Mais lidos</h2>',
+            '<ul class="recent-posts">';
+
+    while ( $my_query->have_posts() ) : $my_query->the_post(); 
     ?>
-      <article class="box-ultimas">
-        <figure class="thumb pull-left">
-          <a href="<?php the_permalink(); ?>" title="Continue lendo sobre: <?php the_title(); ?>">
-            <?php the_post_thumbnail( 'post-small', array( 'class' => 'img-responsive' ) ); ?>
-          </a>
-        </figure>
-        <header class="conteudo-home pull-right">
-          <a href="<?php the_permalink(); ?>" title="Continue lendo sobre: <?php the_title(); ?>"><?php the_title(); ?></a>
-          <p><i class="fa fa-calendar"></i> <?php the_time('j \d\e F \d\e Y'); ?></p>
-        </header>
-      </article>
+      <li class="media">
+        <a href="<?php the_permalink(); ?>" title="Saiba mais: <?php the_title(); ?>" aria-hidden="true" tabindex="-1" class="mr-3">
+          <?php the_post_thumbnail( 'thumbnail', ['class' => 'img-fluid'] ); ?>
+        </a>
+
+        <span class="media-body">
+          <a href="<?php the_permalink(); ?>" class="title" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+          <time class="mb-2 d-flex align-items-center"><?php the_time('d \d\e F \d\e Y'); ?></time>
+        </span>
+      </li>
     <?php endwhile; 
-      echo '</div>';
+      echo    '</ul>',
+            '</div>';
       wp_reset_query();
     echo $args['after_widget'];
   }
@@ -428,21 +430,17 @@ Class My_Recent_Posts_Widget extends WP_Widget_Recent_Posts {
       if( $title ) echo $before_title . $title . $after_title; 
   ?>
     <ul class="recent-posts">
-      <?php $i=1; while( $r->have_posts() ) : $r->the_post(); ?>				
+      <?php while( $r->have_posts() ) : $r->the_post(); ?>				
         <li class="media">
           <a href="<?php the_permalink(); ?>" title="Saiba mais: <?php the_title(); ?>" aria-hidden="true" tabindex="-1" class="mr-3">
-            <figure class="mb-0">
-              <?php the_post_thumbnail( 'thumbnail', ['class' => 'img-fluid'] ); ?>
-              <span class="count"><?php echo $i.'.'; ?></span>
-              <span class="mask"></span>
-            </figure>
+            <?php the_post_thumbnail( 'thumbnail', ['class' => 'img-fluid'] ); ?>
           </a>
           <span class="media-body">
             <a href="<?php the_permalink(); ?>" class="title" title="<?php the_title(); ?>"><?php the_title(); ?></a>
-            <time class="mb-2 d-flex align-items-center"><i class="icon icon-calendar mr-2"></i><?php the_time('d \d\e F \d\e Y'); ?></time>
+            <time class="mb-2 d-flex align-items-center"><?php the_time('d \d\e F \d\e Y'); ?></time>
           </span>
         </li>
-      <?php $i++; endwhile; ?>
+      <?php endwhile; ?>
     </ul>
   <?php
       echo $after_widget;

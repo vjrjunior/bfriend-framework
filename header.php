@@ -11,41 +11,47 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<!-- google maps -->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1P-H_fyEh6IaGS_mdIAPnMUIiQhKON2s"></script>
+    <?php if ( get_field('integrations', 'option') ) : ?>
+      <?php echo get_field('integrations', 'option'); ?>
+    <?php endif; ?>
+
     <?php wp_head(); ?>
 	</head>
   <body <?php body_class(); ?>>
-    <div class="preloader"><div class="preloader__loader"><?php for ($i = 1; $i <= 2; $i++) { echo '<div></div>'; } ?></div></div>
+    <h1 class="visually-hidden"><?php bloginfo( 'name' ); ?> - <?php bloginfo( 'description' ); ?></h1>
 
-    <header class="main-header">
+    <header class="main-header fixed-top">
       <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <nav id="navbar" class="navbar navbar-expand-lg bsnav">
-              <a class="navbar-brand" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-                <img src="<?php echo get_field('logo', 'option'); ?>" class="img-fluid" />
-              </a>
-              <button class="navbar-toggler toggler-spring"><span class="navbar-toggler-icon"></span></button>
-              <?php
-                wp_nav_menu([
-                  'theme_location'  => 'global',
-                  'container'       => 'div',
-                  'container_class' => 'collapse navbar-collapse justify-content-md-end',
-                  'menu_id'         => false,
-                  'menu_class'      => 'navbar-nav navbar-mobile',
-                  'depth'           => 2,
-                  'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
-                  'walker'          => new wp_bootstrap_navwalker()
-                ]);
-              ?>
-            </nav>
+        <nav id="navbar" class="navbar navbar-expand-lg bsnav">
+          <a class="navbar-brand" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+            <?php if ( get_field('logo', 'option') ) : ?>
+              <?php echo wp_get_attachment_image( get_field('logo', 'option'), 'full', false, ['class' => 'img-fluid' ] ); ?>          
+            <?php else : ?>
+              <h2><?php bloginfo( 'name' ); ?></h2>
+            <?php endif; ?>
+          </a>
 
-            <div class="bsnav-mobile">
-              <div class="bsnav-mobile-overlay"></div>
-              <div class="navbar"></div>
-            </div>
-          </div>
-        </div>
+          <button class="navbar-toggler toggler-spring"><span class="navbar-toggler-icon"></span></button>
+
+          <?php
+            wp_nav_menu([
+              'theme_location'  => 'global',
+              'container'       => 'div',
+              'container_class' => 'collapse navbar-collapse justify-content-md-center',
+              'menu_id'         => false,
+              'menu_class'      => 'navbar-nav navbar-mobile ms-auto',
+              'depth'           => 1,
+              'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
+              'walker'          => new wp_bootstrap_navwalker(),
+            ]);
+          ?>
+        </nav>
       </div>
     </header>
+
+    <div class="bsnav-mobile">
+      <div class="bsnav-mobile-overlay"></div>
+      <div class="navbar justify-content-start">
+        <button type="button" class="btn-close btn-close-menu ms-auto" aria-label="Close"></button>
+      </div>
+    </div>

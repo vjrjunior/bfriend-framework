@@ -2,25 +2,26 @@
 
   get_header();
 
-    get_template_part('partials/_wrap-start');
+    _partial('_wrap-start');
+      _partial('_h-page');
 
       if (is_home()) :
-        get_template_part( 'contents/_loop-index' );
+        _content('content-index');
 
       elseif (is_singular('post')) :
-        get_template_part( 'contents/_loop-single' );
+        _content('content-single');
 
       elseif (is_404()) :
-        get_template_part( 'contents/_loop-404' );
+        _content('content-404');
 
       elseif (is_search()) :
-        get_template_part( 'contents/_loop-search' );
+        _content('content-search');
 
       else :
-        get_template_part( 'contents/_loop-page' );
+        _content('content-page');
 
       endif;
 
-    get_template_part('partials/_wrap-end');
+    _partial('_wrap-end');
   
   get_footer();

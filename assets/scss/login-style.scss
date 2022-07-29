@@ -5,7 +5,7 @@ body.login {
   h1 {
     a {
       width: 320px !important;
-      height: 93px !important;
+      height: 90px !important;
       margin: 80px auto 5px;
     }
   }
@@ -24,19 +24,21 @@ body.login {
       box-shadow: none;
       padding: 0 20px;
       text-shadow: none;
+      text-transform: uppercase;
+      border-radius: 0;
     }
   } // #loginform
 
   #nav, #backtoblog {
-    color: white !important;
+    color: #cccccc !important;
     text-align: center;
     padding-left: 0;
     a {
-      color: white !important;
+      color: #cccccc !important;
       text-decoration: none;
       text-shadow: none;
       &:hover {
-        color: white !important;
+        color: #cccccc !important;
         text-decoration: underline;
       }
     }

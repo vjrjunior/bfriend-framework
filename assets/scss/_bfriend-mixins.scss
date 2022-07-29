@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /* variables */
 /* ----------------------------------------- */
 	$font-pri:    '', sans-serif;
@@ -13,16 +15,38 @@
     ter: $color-ter,
     qua: $color-qua
   ) !default;
+
+  $bf-fonts: (
+    pri: $font-pri
+  ) !default;
+
+  $f-xs: 100%;
 /* ----------------------------------------- variables */
 
 /* 	classes  */
 /* ----------------------------------------- */
   .font-pri  { font-family: $font-pri; }
+
+  .font-thin   	{ font-weight: 100; }
+	.font-elight  { font-weight: 200; }
+	.font-light  	{ font-weight: 300; }
+	.font-normal  { font-weight: 400; }
+	.font-medium  { font-weight: 500; }
+	.font-semi    { font-weight: 600; }
+	.font-bold    { font-weight: 700; }
+	.font-ebold   { font-weight: 800; }
+	.font-black   { font-weight: 900; }
+
   
   .color-pri { color: $color-pri; }
   .color-sec { color: $color-sec; }
   .color-ter { color: $color-ter; }
   .color-qua { color: $color-qua; }
+
+  .bg-pri { background-color: $color-pri; }
+  .bg-sec { background-color: $color-sec; }
+  .bg-ter { background-color: $color-ter; }
+  .bg-qua { background-color: $color-qua; }
 /* ----------------------------------------- 	classes */
 
 /* general mixins and functions */
@@ -87,18 +111,22 @@
 	@mixin semi()    	{ font-weight: 600; }
 	@mixin bold()    	{ font-weight: 700; }
 	@mixin ebold()    { font-weight: 800; }
-	@mixin black()   	{ font-weight: 900; }
-
+  @mixin black()   	{ font-weight: 900; }
+  
 	// Font size rem
 	@function calculateRem($size) {
-	  $remSize: $size / 16px;
+	  $remSize: math.div($size, 16px);
 	  @return #{$remSize}rem;
 	}
 
 	@mixin font($size) {
 	  font-size: $size;
 	  font-size: calculateRem($size);
-	}
+  }
+  
+  @mixin ls($value) {
+    letter-spacing: $value/1000 + em;
+  }
 
 	@mixin radius($px) {
 	  -webkit-border-radius: $px;
@@ -156,12 +184,3 @@
 	  }
 	}
 /* ----------------------------------------- general mixins and functions */
-
-/* 	custom container widths  */
-/* ----------------------------------------- */
-$f-xs: 100%;
-$f-sm: map-get($container-max-widths, 'sm');
-$f-md: map-get($container-max-widths, 'ms');
-$f-lg: map-get($container-max-widths, 'lg');
-$f-xl: map-get($container-max-widths, 'xl');
-/* ----------------------------------------- 	custom container widths */

@@ -2,20 +2,22 @@
 
 body.preload { overflow: hidden; }
 
+body {
+  font-family: bf-font('pri');
+  &.preload { overflow: hidden; }
+}
+
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6,
-a, ul, ul li, ol, ol li, input, textarea, span, p, label, button {
-	font-family: $font-pri;
+a, ul, ul li, ol, ol li, input, textarea, span, p, label, button, th, td, time {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
 /* highlights */
 /* ----------------------------------------- */
-h1, h2, h3, h4, h5, h6, p, a, li, span {
-	&::selection, &::-moz-selection, &::-webkit-selection {
-		background-color: $color-pri;
-		color: #fff;
-	}
+::selection {
+  background-color: $color-pri;
+  color: #fff;
 }
 /* ----------------------------------------- highlights */	
 
@@ -36,15 +38,13 @@ a, img, input, button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
-  width: 100vw;
-  height: 100vh;
+  width: 100vw; height: 100vh;
   z-index: 1050;
+  background-color: bf-color('sec');
   
   &__loader {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   
@@ -57,17 +57,14 @@ a, img, input, button {
       border: 2px solid $color-pri;
       border-bottom-color: transparent;
       border-top-color: transparent;
-      border-radius: 100%;
-      height: 35px;
-      width: 35px;
+      width: 35px; height: 35px;
       animation: rotate 1s 0s ease-in-out infinite;
+      @include radius(100%);
   
       &:last-child {
         display: inline-block;
-        top: -10px;
-        left: -10px;
-        width: 15px;
-        height: 15px;
+        top: -10px; left: -10px;
+        width: 15px; height: 15px;
         animation-duration: 0.5s;
         border-color: $color-pri transparent $color-pri transparent;
         animation-direction: reverse;
@@ -95,6 +92,15 @@ a, img, input, button {
 	}
 }
 /* ----------------------------------------- embed container */	
+
+/* 	images ratio  */
+/* ----------------------------------------- */
+.ratio-img { 
+	img {
+    object-fit: cover;
+  }
+}
+/* ----------------------------------------- 	images ratio */
 
 /* acf map container */
 /* ----------------------------------------- */
@@ -135,237 +141,21 @@ a, img, input, button {
 	  &:hover { cursor: pointer; }
 	}
 	
-	&:after {
-	  font-family: FontAwesome;
-		content:"\f107";
-		display: flex;
-		align-items: center;
-	  position: absolute;
-	  right: 10px;
-		top: 0;
-		height: 45px;
-	  z-index: 1;
-	  color: $color-pri;
-	  @include font(20px);
-	}
+	&::after {
+    content: "";
+    position: absolute;
+    top: 32%; right: 15px;
+    flex-shrink: 0;
+    width: $accordion-icon-width;
+    height: $accordion-icon-width;
+    margin-left: auto;
+    background-image: escape-svg($accordion-button-icon);
+    background-repeat: no-repeat;
+    background-size: $accordion-icon-width;
+    @include transition($accordion-icon-transition);
+  }
 }
 /* ----------------------------------------- select box */	
-
-/* contact form */
-/* ----------------------------------------- */
-.wpcf7 {
-	position: relative;
-
-	.wpcf7-response-output {
-		font-family: $font-pri;
-		padding: 10px 0;
-		text-align: center;
-		margin: 1rem 0 1.5rem;
-		color: $color-pri;
-		border: 1px solid $color-pri;
-	}
-
-	.wpcf7-not-valid-tip {
-		display: none;
-	}
-
-	.ajax-loader,
-	.ajax-loader:before,
-	.ajax-loader:after {
-		width: 0.5em;
-		height: 1em;
-		animation: load 1s infinite ease-in-out;
-		-webkit-animation: load 1s infinite ease-in-out;
-	}
-	.ajax-loader {
-		background-image: none !important;
-		position: absolute;
-		bottom: 0; left: 50%;
-		width: 0.5em !important;
-		height: 1em !important;
-		background: $color-pri;
-		color: $color-pri;
-		text-indent: -9999em;
-		margin: auto !important;
-		animation-delay: -0.16s;
-		-webkit-animation-delay: -0.16s;
-		transform: translate(-50%,-50%) scale(.3);
-    -webkit-transform: translate(-50%,-50%) scale(.3);
-    @include font(14px);
-
-		&:before, &:after {
-			background: $color-pri;
-			position: absolute;
-			top: 0;
-			content: '';
-		}
-
-		&:before {
-			left: -1.5em;
-			animation-delay: -0.32s;
-			-webkit-animation-delay: -0.32s;
-		}
-		
-		&:after {
-			left: 1.5em;
-		}
-	}
-
-	p {
-		position: relative;
-		
-		&:not(.normal) {
-			width: 100%;
-			margin: 0 0 25px;
-		}
-
-		.wpcf7-form-control-wrap {
-			display: block;
-		}
-  }
-  
-  label {
-		width: 100%;
-		margin: 0;
-	}
-
-	label:not(.normal):not(.error) {
-		color: $color-pri;
-		margin: 0;
-    position: absolute;
-    width: calc(100% - 20px);
-		z-index: 10;
-		top: 22px;
-		left: 20px;
-		pointer-events: none;
-		text-align: left;
-		transform: translateY(-50%);
-		@include font(16px);
-		@include transition(top .2s);       
-
-		&.has-value {
-			top: -9px;
-			@include font(12px);
-		}
-	}
-
-	.line {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		height: 1px;
-		background: $color-pri;
-		width: 0;
-		@include transition(width 0.2s);
-
-		&.has-value {
-			width: 100%;
-		}
-	}
-
-	input:not([type='radio']), textarea {
-    width: 100%;
-    height: 50px;
-		border: 1px solid #D2D2D2;
-		padding: .5rem 1rem;
-		line-height: 1.5;
-		outline: none;
-		color: $color-pri;
-
-		&.wpcf7-not-valid {
-			border-color: $color-pri;
-		}
-  }
-  
-  textarea { height: 150px; }
-
-	input[type="date"] {
-		appearance: none;
-		color: transparent;
-
-		&.val {
-			color: $color-pri;
-			&::-webkit-datetime-edit-text {
-				color: $color-pri;
-			}
-		}
-
-		&::-webkit-inner-spin-button { 
-			display: none;
-		}
-
-		&::-webkit-datetime-edit-text {
-			color: transparent;
-		}
-
-		&::-webkit-calendar-picker-indicator {
-			color: #BABCBF;
-			background: transparent;
-			height: 6px;
-			opacity: 1;
-			visibility: visible;
-			display: block;
-		}
-	}
-
-	.box-file {
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-start;
-		align-items: center;
-		position: relative;
-		margin-bottom: 1rem;
-	}
-
-	.btn-file {
-		position: relative;
-		max-width: 195px;
-		cursor: pointer;
-		float: left;
-		margin: 0 15px 0 0;
-		padding: 10px 20px;
-		@include normal;
-		@include transition(all 150ms ease-in-out);
-
-		i { margin: 0 10px 0 0; }
-
-		&:hover {
-			color: $color-qua;
-			background: $color-pri;
-		}
-
-		span.wpcf7-not-valid-tip {
-			display: block;
-			position: absolute;
-			bottom: -35px;
-			left: -20px;
-			width: 280px;
-		}
-
-		input[type=file] {
-			padding: 0;
-			position: absolute;
-			top: 0;
-			right: 0;
-			width: 100%;
-			height: 100%;
-			opacity: 0;
-			display: block;
-		}
-	}
-
-	button {
-		border: 0;
-		cursor: pointer;
-
-		&:focus { outline: none; }
-		&:hover {
-			color: white;
-			background: darken($color-pri, 10%);
-		}
-	}
-}
-/* ----------------------------------------- contact form */	
 
 /* wp wysiwyg styles */
 /* ----------------------------------------- */
@@ -441,24 +231,47 @@ a, img, input, button {
   max-width: calc(100vw - ((100vw - #{$f-xs}) / 2));
   margin-left: auto;
   
-  .collumn-3,
-  .collumn-9 {
+  .column-3,
+  .column-4,
+  .column-8,
+  .column-9 {
     padding: 0 15px;
+    flex: 0 0 100%;
+    max-width: 100%;
   }
   
-  .collumn-3 {
-    flex: 0 0 calc(#{$f-xs} * .20);
-    max-width: calc(#{$f-xs} * .20);
-  }
-  .collumn-9 {
-    flex: 0 0 calc(100% - (#{$f-xs} * .20));
-    max-width: calc(100% - (#{$f-xs} * .20));
+  .column-3 {
+    @include media-breakpoint-up(md) {
+      flex: 0 0 calc(#{$f-xs} * .20);
+      max-width: calc(#{$f-xs} * .20);
+    }
   }
 
-  @include media-breakpoint-up(sm) { max-width: calc(100vw - ((100vw - #{$f-sm}) / 2)); }
-  @include media-breakpoint-up(md) { max-width: calc(100vw - ((100vw - #{$f-md}) / 2)); }
-  @include media-breakpoint-up(lg) { max-width: calc(100vw - ((100vw - #{$f-lg}) / 2)); }
-  @include media-breakpoint-up(xl) { max-width: calc(100vw - ((100vw - #{$f-xl}) / 2)); }
+  .column-4 {
+    @include media-breakpoint-up(md) {
+      flex: 0 0 calc(#{$f-xs} * .35);
+      max-width: calc(#{$f-xs} * .35);
+    }
+  }
+
+  .column-8 {
+    @include media-breakpoint-up(md) {
+      flex: 0 0 calc(100% - (#{$f-xs} * .35));
+      max-width: calc(100% - (#{$f-xs} * .35));
+    }
+  }
+
+  .column-9 {
+    @include media-breakpoint-up(md) {
+      flex: 0 0 calc(100% - (#{$f-xs} * .20));
+      max-width: calc(100% - (#{$f-xs} * .20));
+    }
+  }
+
+  @include media-breakpoint-up(sm) { max-width: calc(100vw - ((100vw - 540px) / 2)); }
+  @include media-breakpoint-up(md) { max-width: calc(100vw - ((100vw - 720px) / 2)); }
+  @include media-breakpoint-up(lg) { max-width: calc(100vw - ((100vw - 960px) / 2)); }
+  @include media-breakpoint-up(xl) { max-width: calc(100vw - ((100vw - 1140px) / 2)); }
 }
 
 .full-left {
@@ -466,23 +279,46 @@ a, img, input, button {
   max-width: calc(100vw - ((100vw - #{$f-xs}) / 2));
   margin-right: auto;
   
-  .collumn-3,
-  .collumn-9 {
+  .column-3,
+  .column-4,
+  .column-8,
+  .column-9 {
     padding: 0 15px;
+    flex: 0 0 100%;
+    max-width: 100%;
   }
   
-  .collumn-3 {
-    flex: 0 0 calc(#{$f-xs} * .20);
-    max-width: calc(#{$f-xs} * .20);
-  }
-  .collumn-9 {
-    flex: 0 0 calc(100% - (#{$f-xs} * .20));
-    max-width: calc(100% - (#{$f-xs} * .20));
+  .column-3 {
+    @include media-breakpoint-up(md) {
+      flex: 0 0 calc(#{$f-xs} * .20);
+      max-width: calc(#{$f-xs} * .20);
+    }
   }
 
-  @include media-breakpoint-up(sm) { max-width: calc(100vw - ((100vw - #{$f-sm}) / 2)); }
-  @include media-breakpoint-up(md) { max-width: calc(100vw - ((100vw - #{$f-md}) / 2)); }
-  @include media-breakpoint-up(lg) { max-width: calc(100vw - ((100vw - #{$f-lg}) / 2)); }
-  @include media-breakpoint-up(xl) { max-width: calc(100vw - ((100vw - #{$f-xl}) / 2)); }
+  .column-4 {
+    @include media-breakpoint-up(md) {
+      flex: 0 0 calc(#{$f-xs} * .35);
+      max-width: calc(#{$f-xs} * .35);
+    }
+  }
+
+  .column-8 {
+    @include media-breakpoint-up(md) {
+      flex: 0 0 calc(100% - (#{$f-xs} * .35));
+      max-width: calc(100% - (#{$f-xs} * .35));
+    }
+  }
+
+  .column-9 {
+    @include media-breakpoint-up(md) {
+      flex: 0 0 calc(100% - (#{$f-xs} * .20));
+      max-width: calc(100% - (#{$f-xs} * .20));
+    }
+  }
+
+  @include media-breakpoint-up(sm) { max-width: calc(100vw - ((100vw - 540px) / 2)); }
+  @include media-breakpoint-up(md) { max-width: calc(100vw - ((100vw - 720px) / 2)); }
+  @include media-breakpoint-up(lg) { max-width: calc(100vw - ((100vw - 960px) / 2)); }
+  @include media-breakpoint-up(xl) { max-width: calc(100vw - ((100vw - 1140px) / 2)); }
 }
 /* ----------------------------------------- 	custom full grid */

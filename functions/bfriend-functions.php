@@ -1,42 +1,37 @@
 <?php
-// dequeue native styles and enqueue styles of theme
-function bfriend_dequeue_styles( $enqueue_styles ) {
-  unset( $enqueue_styles['woocommerce-general'] );
-  unset( $enqueue_styles['woocommerce-layout'] );
-  // unset( $enqueue_styles['woocommerce-smallscreen'] );
-  return $enqueue_styles;
-}
-add_filter( 'woocommerce_enqueue_styles', 'bfriend_dequeue_styles' );
+// content section
+function content_section( $field, $class = false, $id = false ) {
 
-function wp_enqueue_woocommerce_style(){
-  wp_register_style( 'bfriend-woocommerce', get_template_directory_uri() . '/assets/css/min/woocommerce-min.css' );
-  wp_register_style( 'bfriend-woocommerce-layout', get_template_directory_uri() . '/assets/css/min/woocommerce-layout-min.css' );
-  
-  if ( class_exists( 'woocommerce' ) ) {
-    wp_enqueue_style( 'bfriend-woocommerce' );
-    wp_enqueue_style( 'bfriend-woocommerce-layout' );
-  }
-}
-add_action( 'wp_enqueue_scripts', 'wp_enqueue_woocommerce_style' );
+  $title = get_field($field.'_title', $id);
+  $sub   = get_field($field.'_subtitle', $id);
+  $desc  = get_field($field.'_desc', $id);
+  $btn   = get_field($field.'_btn', $id);
 
-// woocommerce mini cart
-add_filter( 'woocommerce_add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
-function woocommerce_header_add_to_cart_fragment( $fragments ) {
-	global $woocommerce;
-  ob_start();
-  
-  // add anchor on header
-?>
-  <a class="cart-customlocation car" href="<?php echo esc_url(wc_get_cart_url()); ?>" title="Carrinho de compras">
-    <i class="icon icon-cart mr-2"></i>
-    Carrinho (<?php echo sprintf ( _n( '%d', '%d', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?>)
-  </a>
-<?php
-	$fragments['a.cart-customlocation'] = ob_get_clean();
-	return $fragments;
+  if ( $title || $sub) :
+    echo '<div class="s__h-section '.$class.'">';
+      if ($title) { echo '<h2>'. $title .'</h2>'; }
+      if ($sub)   { echo '<h3>'. $sub .'</h3>'; }
+      if ($desc)  { echo '<p>'. $desc .'</p>'; }
+      if ($btn)   { echo '<a href="'.esc_url( $btn['url'] ).'" target="'.esc_attr( $btn['target'] ).'" class="btn btn__classic">'.esc_html( $btn['title'] ).'</a>'; }
+    echo '</div>';
+  endif;
 }
 
-// thumbnail sizes of woocommerce
-// add_filter( 'single_product_archive_thumbnail_size', function( $size ) {
-//   return 'product-thumb';
-// } );
+// classic button
+function btn_classic( $field, $class = '', $id = false ) {
+  $field = get_field( $field, $id );
+  if ( $field ) :
+    $link_url    = $field['url'];
+    $link_title  = $field['title'];
+    $link_target = $field['target'] ? $field['target'] : '_self';
+    
+    echo '<a href="'.esc_url( $link_url ).'" class="btn btn__classic '.$class.'" target="'.esc_attr( $link_target ).'">'. esc_html( $link_title ) .'</a>';
+  endif;
+}
+
+// customize medium-editor
+add_filter('medium-editor-theme', 'bf_medium_editor_theme_function');
+function bf_medium_editor_theme_function($theme) {
+  $theme = 'beagle';
+  return $theme;
+}
