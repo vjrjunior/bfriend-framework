@@ -20,38 +20,44 @@
   <body <?php body_class(); ?>>
     <h1 class="visually-hidden"><?php bloginfo( 'name' ); ?> - <?php bloginfo( 'description' ); ?></h1>
 
-    <header class="main-header fixed-top">
-      <div class="container">
-        <nav id="navbar" class="navbar navbar-expand-lg bsnav">
-          <a class="navbar-brand" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-            <?php if ( get_field('logo', 'option') ) : ?>
-              <?php echo wp_get_attachment_image( get_field('logo', 'option'), 'full', false, ['class' => 'img-fluid' ] ); ?>          
-            <?php else : ?>
-              <h2><?php bloginfo( 'name' ); ?></h2>
-            <?php endif; ?>
-          </a>
+    <header id="header" class="main-header">
+      <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+          <?php if ( get_field('logo', 'option') ) : ?>
+            <?php echo wp_get_attachment_image( get_field('logo', 'option'), 'full', false, ['class' => 'img-fluid' ] ); ?>
+          <?php else : ?>
+            <h2><?php bloginfo( 'name' ); ?></h2>
+          <?php endif; ?>
+        </a>
 
-          <button class="navbar-toggler toggler-spring"><span class="navbar-toggler-icon"></span></button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#headerNavbar" aria-controls="headerNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="headerNavbar" aria-labelledby="headerNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="headerNavbarLabel">
+              <?php if ( get_field('logo', 'option') ) : ?>
+                <?php echo wp_get_attachment_image( get_field('logo', 'option'), 'full', false, ['class' => 'img-fluid' ] ); ?>
+              <?php else : ?>
+                <?php bloginfo( 'name' ); ?>
+              <?php endif; ?>
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
 
           <?php
             wp_nav_menu([
               'theme_location'  => 'global',
               'container'       => 'div',
-              'container_class' => 'collapse navbar-collapse justify-content-md-center',
+              'container_class' => 'offcanvas-body',
               'menu_id'         => false,
-              'menu_class'      => 'navbar-nav navbar-mobile ms-auto',
+              'menu_class'      => 'navbar-nav justify-content-start align-items-md-center flex-grow-1',
               'depth'           => 1,
               'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
               'walker'          => new wp_bootstrap_navwalker(),
             ]);
           ?>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </header>
-
-    <div class="bsnav-mobile">
-      <div class="bsnav-mobile-overlay"></div>
-      <div class="navbar justify-content-start">
-        <button type="button" class="btn-close btn-close-menu ms-auto" aria-label="Close"></button>
-      </div>
-    </div>

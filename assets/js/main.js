@@ -1,5 +1,3 @@
-// @codekit-prepend "bsnav.js";
-
 (function ($, root, undefined) {
 	$(function () {
 
