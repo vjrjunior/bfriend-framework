@@ -6,6 +6,7 @@
             "key": "field_5b43938d45904",
             "label": "Aparência",
             "name": "",
+            "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
@@ -22,6 +23,7 @@
             "key": "field_561577915ca7d",
             "label": "Adicione a logo:",
             "name": "logo",
+            "aria-label": "",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -46,6 +48,7 @@
             "key": "field_562c15be1ca44",
             "label": "Adicione a logo do rodapé:",
             "name": "logo_footer",
+            "aria-label": "",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -70,6 +73,7 @@
             "key": "field_5b5c7bc120aab",
             "label": "Contatos",
             "name": "",
+            "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
@@ -86,6 +90,7 @@
             "key": "field_561578f429a52",
             "label": "Adicione o telefone:",
             "name": "phone_info",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -105,6 +110,7 @@
             "key": "field_5b5c7bd920aac",
             "label": "Adicione o celular:",
             "name": "cel_info",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -124,6 +130,7 @@
             "key": "field_5615790629a53",
             "label": "Adicione o e-mail:",
             "name": "email_info",
+            "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -143,6 +150,7 @@
             "key": "field_5b6ae7d1a2a2f",
             "label": "Adicione o endereço:",
             "name": "address_info",
+            "aria-label": "",
             "type": "textarea",
             "instructions": "",
             "required": 0,
@@ -162,6 +170,7 @@
             "key": "field_5b6ae7f2a2a30",
             "label": "Selecione a localização:",
             "name": "location_info",
+            "aria-label": "",
             "type": "google_map",
             "instructions": "",
             "required": 0,
@@ -180,6 +189,7 @@
             "key": "field_5615785929a4e",
             "label": "Adicione as redes sociais:",
             "name": "social_info",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -199,6 +209,7 @@
                     "key": "field_5615787529a4f",
                     "label": "Adicione o ícone:",
                     "name": "icon_info",
+                    "aria-label": "",
                     "type": "font-awesome",
                     "instructions": "",
                     "required": 0,
@@ -892,12 +903,14 @@
                         "fa-youtube-play": "&#xf16a; youtube-play",
                         "fa-youtube-square": "&#xf166; youtube-square"
                     },
-                    "default_label": ""
+                    "default_label": "",
+                    "parent_repeater": "field_5615785929a4e"
                 },
                 {
                     "key": "field_561578a229a50",
                     "label": "Adicione a URL:",
                     "name": "url_info",
+                    "aria-label": "",
                     "type": "url",
                     "instructions": "",
                     "required": 0,
@@ -908,14 +921,17 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": ""
+                    "placeholder": "",
+                    "parent_repeater": "field_5615785929a4e"
                 }
-            ]
+            ],
+            "rows_per_page": 20
         },
         {
             "key": "field_5b439e09de653",
             "label": "Integrações",
             "name": "",
+            "aria-label": "",
             "type": "tab",
             "instructions": "",
             "required": 0,
@@ -932,6 +948,7 @@
             "key": "field_5b439592bdb5f",
             "label": "Adicione o(s) código(s):",
             "name": "integrations",
+            "aria-label": "",
             "type": "textarea",
             "instructions": "",
             "required": 0,
@@ -946,25 +963,6 @@
             "maxlength": "",
             "rows": "",
             "new_lines": ""
-        },
-        {
-            "key": "field_5b439e1bde654",
-            "label": "Disqus Shortname:",
-            "name": "disqus_shortname",
-            "type": "text",
-            "instructions": "Após criar a conta no disqus: (https:\/\/disqus.com\/register\/), gere um shortname e insira apenas o shortname abaixo.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
         }
     ],
     "location": [
@@ -984,5 +982,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1620306467
+    "show_in_rest": 0,
+    "modified": 1676122873
 }
