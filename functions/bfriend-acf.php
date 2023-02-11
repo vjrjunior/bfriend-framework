@@ -1,7 +1,7 @@
 <?php
 // key acf google maps
 function bfriend_acf_init() {
-  acf_update_setting('google_api_key', 'AIzaSyBiiSp9noWQYHvt1mFbgNhL8IKtjfmUM5g');
+  acf_update_setting('google_api_key', '[KEY]');
 }
 add_action('acf/init', 'bfriend_acf_init');  
 
