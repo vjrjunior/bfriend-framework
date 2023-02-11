@@ -30,7 +30,7 @@
 		</div>
 	</footer>
 
-<?php if ( is_page(11) ) : ?><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiiSp9noWQYHvt1mFbgNhL8IKtjfmUM5g"></script><?php endif; ?>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiiSp9noWQYHvt1mFbgNhL8IKtjfmUM5g"></script> -->
 <?php wp_footer(); ?>
 </body>
 </html>

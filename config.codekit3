@@ -7,7 +7,7 @@
       "uuidString" : "2F60923F-5035-443B-A669-4B441DB8F6E3"
     }
   ],
-  "creatorBuild" : "34434",
+  "creatorBuild" : "34448",
   "files" : {
     "\/.gitattributes" : {
       "cB" : 0,
@@ -175,7 +175,7 @@
       "bF" : 0,
       "ft" : 64,
       "ma" : 0,
-      "mi" : 1,
+      "mi" : 0,
       "oA" : 0,
       "oAP" : "\/assets\/js\/main-min.js",
       "oF" : 0,
@@ -273,6 +273,21 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/assets\/scss\/_contact-form.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
+    "\/assets\/scss\/_design-system.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/_design-system.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -2537,6 +2552,10 @@
         "active" : 0,
         "optionString" : "'always', {exceptAfterSingleLine: false}"
       },
+      "logical-assignment-operators" : {
+        "active" : 0,
+        "optionString" : "'always',  {'enforceForIfStatements': false}"
+      },
       "max-classes-per-file" : {
         "active" : 0,
         "optionString" : "1"
@@ -2697,6 +2716,9 @@
       "no-empty-pattern" : {
         "active" : 1
       },
+      "no-empty-static-block" : {
+        "active" : 0
+      },
       "no-eq-null" : {
         "active" : 0
       },
@@ -2835,6 +2857,9 @@
         "active" : 0
       },
       "no-new-func" : {
+        "active" : 0
+      },
+      "no-new-native-nonconstructor" : {
         "active" : 0
       },
       "no-new-object" : {
@@ -3651,7 +3676,7 @@
       },
       "comments" : {
         "active" : 0,
-        "flagValue" : -1
+        "flagValue" : 1
       },
       "comparisons" : {
         "active" : 1,

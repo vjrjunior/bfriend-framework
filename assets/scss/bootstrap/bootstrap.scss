@@ -1,7 +1,3 @@
-@import "mixins/banner";
-@include bsBanner("");
-
-
 // scss-docs-start import-stack
 // Configuration
 @import "functions";
@@ -34,14 +30,14 @@
 @import "progress";
 @import "list-group";
 @import "close";
-@import "toasts";
 @import "modal";
 @import "tooltip";
-@import "popover";
-@import "carousel";
 @import "spinners";
 @import "offcanvas";
-@import "placeholders";
+// @import "toasts";
+// @import "placeholders";
+// @import "popover";
+// @import "carousel";
 
 // Helpers
 @import "helpers";

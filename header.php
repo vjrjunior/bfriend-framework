@@ -53,7 +53,7 @@
               'container_class' => 'offcanvas-body',
               'menu_id'         => false,
               'menu_class'      => 'navbar-nav justify-content-start align-items-md-center flex-grow-1',
-              'depth'           => 1,
+              'depth'           => 2,
               'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
               'walker'          => new wp_bootstrap_navwalker(),
             ]);

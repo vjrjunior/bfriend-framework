@@ -20,10 +20,12 @@
       border: 2px solid #00a0d2;
     }
 
-    &.init .wpcf7-response-output,
-    &.resetting .wpcf7-response-output,
-    &.submitting .wpcf7-response-output {
-      display: none;
+    &.init,
+    &.resetting,
+    &.submitting {
+      .wpcf7-response-output {
+        display: none;
+      }
     }
 
     &.sent .wpcf7-response-output {
@@ -242,8 +244,7 @@ form.submitting {
     color: bf-color('pri');
     @include font(16px);
     
-    &:not(.normal),
-    &:not(.error) {
+    &.floating {
       margin: 0;
       position: absolute;
       top: 25px; left: 20px;
@@ -259,17 +260,6 @@ form.submitting {
         @include font(12px);
       }
     }
-	}
-
-	.line {
-		position: absolute;
-		left: 0; bottom: 0;
-		height: 1px;
-		background-color: bf-background('pri');
-		width: 0;
-		@include transition(width 0.2s);
-
-		&.has-value { width: 100%; }
 	}
 
 	input:not([type='radio']), textarea {
