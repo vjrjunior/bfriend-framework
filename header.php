@@ -9,7 +9,7 @@
 		<link href="<?php images_url('favicon.ico'); ?>" rel="shortcut icon" type="image/x-icon" />
 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <?php if ( get_field('integrations', 'option') ) : ?>
       <?php echo get_field('integrations', 'option'); ?>

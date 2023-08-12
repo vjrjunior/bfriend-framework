@@ -112,11 +112,13 @@ function bf_related( $args = [] ) {
   ];
 
   $terms = wp_get_post_terms($post->ID, $taxonomies, ['fields' => 'ids']);
-  $argsQuery['tax_query'] = [[
-    'taxonomy' => $taxonomies[0],
-    'field' => 'term_id',
-    'terms' => $terms
-  ]];
+  if ( $taxonomies ) {
+    $argsQuery['tax_query'] = [[
+      'taxonomy' => $taxonomies[0],
+      'field' => 'term_id',
+      'terms' => $terms
+    ]];
+  }
 
   $relatedPostsQuery = new WP_Query($argsQuery);
   if (!$relatedPostsQuery->have_posts()) {

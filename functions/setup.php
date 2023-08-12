@@ -31,14 +31,17 @@ endif;
 function bfriend_load_scripts() {
 	$js = get_template_directory_uri() . '/assets/js/';
 
+  //cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+  //cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+
   if ( !is_admin() ) {
 		$ajax = [
-			'ajaxurl' 	 => admin_url('admin-ajax.php'),
-			'security' 	 => wp_create_nonce('security')
+			'ajaxurl'  => admin_url('admin-ajax.php'),
+			'security' => wp_create_nonce('security')
 		];
 
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'bootstrap',	'//cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js', ['jquery'], false, true );
+		wp_enqueue_script( 'bootstrap',	'//cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js', ['jquery'], false, true );
 
 		wp_localize_script( 'jquery', 'ajax_object', $ajax );
 
@@ -50,12 +53,6 @@ function bfriend_load_scripts() {
   }
 }
 add_action( 'wp_print_scripts', 'bfriend_load_scripts' );
-
-// remove gutenberg block library css
-function bfriend_remove_css() {
-	wp_dequeue_style( 'wp-block-library' );
-}
-add_action( 'wp_enqueue_scripts', 'bfriend_remove_css', 100 );
 
 // load css files
 function bfriend_load_css() {
@@ -75,10 +72,10 @@ function bfriend_load_css_admin() {
 add_action( 'admin_enqueue_scripts', 'bfriend_load_css_admin' );
 
 // remove gutenberg block library css
-function pds_remove_css() {
+function bfriend_remove_css() {
 	wp_dequeue_style( 'wp-block-library' );
 }
-add_action( 'wp_enqueue_scripts', 'pds_remove_css', 100 );
+add_action( 'wp_enqueue_scripts', 'bfriend_remove_css', 100 );
 
 // register sidebars
 function bfriend_sidebar_init() {
