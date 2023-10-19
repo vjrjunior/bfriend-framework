@@ -7,7 +7,7 @@
       "uuidString" : "2F60923F-5035-443B-A669-4B441DB8F6E3"
     }
   ],
-  "creatorBuild" : "34510",
+  "creatorBuild" : "34518",
   "files" : {
     "\/.gitattributes" : {
       "cB" : 0,
@@ -15,6 +15,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/.gitattributes",
+      "oF" : 0
+    },
+    "\/.gitignore" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/.gitignore",
       "oF" : 0
     },
     "\/.vscode\/settings.json" : {
@@ -154,7 +162,7 @@
       "ft" : 64,
       "ma" : 0,
       "mi" : 1,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/assets\/js\/libs-min.js",
       "oF" : 0,
       "sC" : 3,
@@ -878,18 +886,6 @@
       "pg" : 0,
       "sct" : 0
     },
-    "\/assets\/scss\/bootstrap\/bootstrap-grid.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/scss\/bootstrap\/bootstrap-grid-min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
     "\/assets\/scss\/bootstrap\/bootstrap-grid.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -905,18 +901,6 @@
       "pg" : 0,
       "sct" : 0
     },
-    "\/assets\/scss\/bootstrap\/bootstrap-reboot.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/scss\/bootstrap\/bootstrap-reboot-min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
     "\/assets\/scss\/bootstrap\/bootstrap-reboot.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -931,18 +915,6 @@
       "oS" : 0,
       "pg" : 0,
       "sct" : 0
-    },
-    "\/assets\/scss\/bootstrap\/bootstrap-utilities.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/scss\/bootstrap\/bootstrap-utilities-min.css",
-      "oF" : 0,
-      "pg" : 0
     },
     "\/assets\/scss\/bootstrap\/bootstrap-utilities.scss" : {
       "aP" : 0,
@@ -2173,18 +2145,6 @@
       "oAP" : "\/sidebar.php",
       "oF" : 0
     },
-    "\/style-min.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/style-min-min.css",
-      "oF" : 0,
-      "pg" : 0
-    },
     "\/style.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -2218,7 +2178,14 @@
 
   ],
   "manualImportLinks" : {
-
+    "\/assets\/js\/main.js" : [
+      {
+        "followForSyntaxChecking" : 1,
+        "linkedFileAbbreviatedPath" : "\/assets\/js\/libs.js",
+        "position" : 0,
+        "type" : 0
+      }
+    ]
   },
   "projectAttributes" : {
     "creationDate" : 612910241.76180696,
@@ -3119,9 +3086,6 @@
       "no-return-assign" : {
         "active" : 0,
         "optionString" : "'except-parens'"
-      },
-      "no-return-await" : {
-        "active" : 0
       },
       "no-script-url" : {
         "active" : 0

@@ -5,7 +5,7 @@ function _content($file) { include BF_CONTENTS_PATH . $file.'.php'; }
 function _loop($file)    { include BF_LOOPS_PATH . $file.'.php'; }
 
 // custom image sizes
-add_action('init', 'bfriend_custom_image_sizes');
+// add_action('init', 'bfriend_custom_image_sizes');
 function bfriend_custom_image_sizes() {
   add_image_size('slide', 1920, 450, true);
   add_image_size('header-full', 1920, 300, true);
@@ -115,8 +115,8 @@ function bf_related( $args = [] ) {
   if ( $taxonomies ) {
     $argsQuery['tax_query'] = [[
       'taxonomy' => $taxonomies[0],
-      'field' => 'term_id',
-      'terms' => $terms
+      'field'    => 'term_id',
+      'terms'    => $terms
     ]];
   }
 
@@ -126,15 +126,21 @@ function bf_related( $args = [] ) {
   } 
 
   if( $relatedPostsQuery->have_posts() ) {
-    echo '<div id="s s__related">',
-      '<h4 class="s-title">'.(isset($args['title']) ? $args['title'] : 'Leia Também:').'</h4>',
-      '<div class="items">';
-        while ( $relatedPostsQuery->have_posts() ) : $relatedPostsQuery->the_post();
-          _loop( 'loop-index' );
-        endwhile;
+  ?>
+    <div id="s__related container">
+      <h2><?php echo (isset($args['title']) ? $args['title'] : 'Leia Também:'); ?></h2>
 
-    echo '</div>',
-    '</div>';
+      <div class="row">
+        <?php
+          while ( $relatedPostsQuery->have_posts() ) : $relatedPostsQuery->the_post();
+            echo '<div class="col-md-4">';
+              _loop( 'loop-index' );
+            echo '</div>';
+          endwhile;
+        ?>
+      </div>
+    </div>
+  <?php
   }
 
   wp_reset_query(); 
@@ -228,6 +234,15 @@ add_filter('embed_oembed_html', 'wrap_embed_with_div', 10, 3);
 function wrap_embed_with_div($html, $url, $attr) {
   return "<div class=\"embed-container\">".$html."</div>";
 }
+
+// change post class for into posts
+function custom_post_class( $classes, $class, $post_id ) {
+  if ( is_home() ) {
+    $classes[] = 'block__post--into';
+  }
+  return $classes;
+}
+add_filter( 'post_class', 'custom_post_class', 10, 3 );
 
 // custom widget
 class Custom_Widget extends WP_Widget {
@@ -405,15 +420,6 @@ class Mais_Lidos extends WP_Widget {
 
 }
 add_action( 'widgets_init', function() { register_widget( 'Mais_Lidos' ); });
-
-// change post class for into posts
-function custom_post_class( $classes, $class, $post_id ) {
-  if ( is_home() ) {
-    $classes[] = 'block__post--into';
-  }
-  return $classes;
-}
-add_filter( 'post_class', 'custom_post_class', 10, 3 );
 
 // change recent posts widget
 Class My_Recent_Posts_Widget extends WP_Widget_Recent_Posts {

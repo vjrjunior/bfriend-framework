@@ -1,11 +1,8 @@
 <?php
 /* WP-LOGIN */
 /* ----------------------------------------- */
-// Call wp-login Styles
 add_action( 'login_head', 'wpmidia_custom_login' );
-// Change URL logotype
 add_filter('login_headerurl', 'wpmidia_custom_wp_login_url');
-// Change title logotype
 add_filter('login_headertext', 'wpmidia_custom_wp_login_title');
 function wpmidia_custom_login() {
   echo '<link media="all" type="text/css" href="'.get_template_directory_uri().'/assets/css/login-style.css" rel="stylesheet">';
