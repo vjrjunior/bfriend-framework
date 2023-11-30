@@ -16,7 +16,7 @@
 			<div class="row">
 				<div class="col-md-2">
 					<a class="logo d-inline-block" href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-            <?php echo wp_get_attachment_image( get_field('logo', 'option'), 'full', false, ['class' => 'img-fluid' ] ); ?>
+            <?php echo wp_get_attachment_image( get_field('logo_footer', 'option'), 'full', false, ['class' => 'img-fluid' ] ); ?>
 					</a>
 				</div>
 			</div>

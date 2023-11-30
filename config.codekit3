@@ -7,7 +7,7 @@
       "uuidString" : "2F60923F-5035-443B-A669-4B441DB8F6E3"
     }
   ],
-  "creatorBuild" : "34518",
+  "creatorBuild" : "34564",
   "files" : {
     "\/.gitattributes" : {
       "cB" : 0,
@@ -145,17 +145,6 @@
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
-    },
-    "\/assets\/js\/libs-min.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/assets\/js\/libs-min-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
     },
     "\/assets\/js\/libs.js" : {
       "bF" : 0,
@@ -2152,9 +2141,9 @@
       "co" : 0,
       "ft" : 16,
       "ma" : 0,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/style-min.css",
-      "oF" : 0,
+      "oF" : 1,
       "pg" : 0
     },
     "\/templates\/page-about.php" : {
@@ -3018,9 +3007,6 @@
       "no-new-native-nonconstructor" : {
         "active" : 0
       },
-      "no-new-object" : {
-        "active" : 0
-      },
       "no-new-symbol" : {
         "active" : 1
       },
@@ -3032,6 +3018,9 @@
       },
       "no-obj-calls" : {
         "active" : 1
+      },
+      "no-object-constructor" : {
+        "active" : 0
       },
       "no-octal" : {
         "active" : 1
