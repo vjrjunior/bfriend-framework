@@ -11,13 +11,16 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <?php if ( get_field('integrations', 'option') ) : ?>
-      <?php echo get_field('integrations', 'option'); ?>
+    <?php if ( get_field('integrations_head', 'option') ) : ?>
+      <?php echo get_field('integrations_head', 'option'); ?>
     <?php endif; ?>
 
     <?php wp_head(); ?>
 	</head>
   <body <?php body_class(); ?>>
+    <?php if ( get_field('integrations_body', 'option') ) : ?>
+      <?php echo get_field('integrations_body', 'option'); ?>
+    <?php endif; ?>
     <h1 class="visually-hidden"><?php bloginfo( 'name' ); ?> - <?php bloginfo( 'description' ); ?></h1>
 
     <header id="header" class="main-header">

@@ -946,8 +946,8 @@
         },
         {
             "key": "field_5b439592bdb5f",
-            "label": "Adicione o(s) código(s):",
-            "name": "integrations",
+            "label": "Adicione o(s) código(s) à serem exibidos entre as tags HEAD:",
+            "name": "integrations_head",
             "aria-label": "",
             "type": "textarea",
             "instructions": "",
@@ -959,9 +959,29 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
             "maxlength": "",
             "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_65773f712ae96",
+            "label": "Adicione o(s) código(s) à serem exibidos entre as tags BODY:",
+            "name": "integrations_body",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
             "new_lines": ""
         }
     ],
@@ -983,5 +1003,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1676122873
+    "modified": 1702313852
 }

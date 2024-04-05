@@ -1666,6 +1666,21 @@
       "sC" : 3,
       "tS" : 0
     },
+    "\/assets\/scss\/bootstrap\/tests\/mixins\/_auto-import-of-variables-dark.test.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/assets\/scss\/bootstrap\/tests\/mixins\/_auto-import-of-variables-dark.test.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
     "\/assets\/scss\/bootstrap\/tests\/mixins\/_color-modes.test.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -3443,7 +3458,7 @@
       }
     },
     "esLintSourceType" : 0,
-    "externalServerAddress" : "http:\/\/nitida.bfriend",
+    "externalServerAddress" : "http:\/\/default.bfriend",
     "gitIgnoreBuildFolder" : 1,
     "hideConfigFile" : 0,
     "jsCheckerReservedNamesString" : "",
